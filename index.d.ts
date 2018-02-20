@@ -42,6 +42,12 @@ namespace Zwerm {
             lastTransactionTIme: string;
         }
 
+        interface EvaluatedTransactionKeys {
+            botUserId: string;
+            transactionId: string;
+            timestamp: string;
+        }
+
         interface TransactionEntry {
             transactionId: string;
             conversationId: string;
@@ -78,10 +84,10 @@ namespace Zwerm {
     }
 
     namespace API {
-        interface FilterBotUsersParams {
+        interface DynamoFilter<Entry> {
             condition: string;
             filter?: string;
-            names?: { [key: string]: keyof Zwerm.Database.UserEntry }
+            names?: { [key: string]: keyof Entry }
             values?: { [key: string]: string; }
         }
 
