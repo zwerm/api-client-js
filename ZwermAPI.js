@@ -46,6 +46,50 @@ class ZwermAPI {
 
     // region bots
     // region bot users
+    /**
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {?number} [limit]
+     * @param {Zwerm.API.SortOrder} [sort='desc']
+     *
+     * @return {Promise<Zwerm.API.DynamoResult<Zwerm.Database.EvaluatedUserKeys, Zwerm.Database.UserEntry>>}
+     */
+    listBotUsers(teamSlug, botId, { limit, sort = 'desc' } = {}) {
+        return this._zwermRequest.get(`bots/${teamSlug}/${botId}/users`, { params: { limit, sort } })
+                   .then(response => response.data);
+    }
+
+    /**
+     * Filter users of a bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {Zwerm.API.FilterBotUsersParams} filterObj
+     * @param {?number} [limit]
+     * @param {Zwerm.API.SortOrder} [sort='desc']
+     *
+     * @return {Promise<Zwerm.API.DynamoResult<Zwerm.Database.EvaluatedUserKeys, Zwerm.Database.UserEntry>>}
+     */
+    filterBotUsers(teamSlug, botId, filterObj, { limit, sort = 'desc' } = {}) {
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users`, filterObj, { params: { limit, sort } })
+                   .then(response => response.data);
+    }
+
+    /**
+     * Get a single user of a bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     *
+     * @return {Promise<Zwerm.Database.UserEntry>}
+     */
+    getBotUser(teamSlug, botId, userId) {
+        return this._zwermRequest.get(`bots/${teamSlug}/${botId}/users/${userId}`)
+                   .then(response => response.data['Item']);
+    }
+
     // endregion
     // region bot conversations
     // endregion
@@ -54,7 +98,7 @@ class ZwermAPI {
     /**
      * List your bots.
      *
-     * @return {Promise<ZwermAPI.Team>}
+     * @return {Promise<Zwerm.API.Team>}
      */
     listUserBots() {
         return this._zwermRequest.get('/user/bots')
@@ -66,7 +110,7 @@ class ZwermAPI {
      *
      * @param {string} teamSlug
      *
-     * @return {Promise<ZwermAPI.Team>}
+     * @return {Promise<Zwerm.API.Team>}
      */
     listTeamBots(teamSlug) {
         return this._zwermRequest.get(`/teams/${teamSlug}/bots`)
@@ -81,7 +125,7 @@ class ZwermAPI {
     /**
      * List your teams
      *
-     * @return {Promise<ZwermAPI.Team>}
+     * @return {Promise<Zwerm.API.Team>}
      */
     listUserTeams() {
         return this._zwermRequest.get('/user/teams')
@@ -93,7 +137,7 @@ class ZwermAPI {
     /**
      * Get the authenticated user.
      *
-     * @return {Promise<ZwermAPI.User>}
+     * @return {Promise<Zwerm.API.User>}
      */
     getUser() {
         return this._zwermRequest.get('/user')
@@ -103,9 +147,9 @@ class ZwermAPI {
     /**
      * Update the authenticated user.
      *
-     * @param {ZwermAPI.PartialUser} partialUser
+     * @param {Zwerm.API.PartialUser} partialUser
      *
-     * @return {Promise<ZwermAPI.User>}
+     * @return {Promise<Zwerm.API.User>}
      */
     updateUser(partialUser) {
         return this._zwermRequest.patch('/user', partialUser)
