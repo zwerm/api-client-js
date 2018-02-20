@@ -48,6 +48,19 @@ namespace Zwerm {
             timestamp: string;
         }
 
+        interface ConversationEntry {
+            botUserId: string;
+            conversationId: string;
+            firstTransactionTime: string;
+            firstTransaction: Zwerm.Database.TransactionEntry,
+            lastTransaction: Zwerm.Database.TransactionEntry,
+            lastTransactionTime: string;
+            creation: string;
+            lifetime: number
+            expiration: string;
+            data: Array,
+        }
+
         interface TransactionEntry {
             transactionId: string;
             conversationId: string;

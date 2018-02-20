@@ -92,6 +92,39 @@ class ZwermAPI {
 
     // endregion
     // region bot conversations
+    /**
+     * Filters conversations of a specific user of a bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {Zwerm.API.DynamoFilter<Zwerm.Database.ConversationEntry>} filterObj
+     * @param {?number} [limit]
+     * @param {Zwerm.API.SortOrder} [sort='desc']
+     *
+     * @return {Promise<Zwerm.API.DynamoResult<null, Zwerm.Database.ConversationEntry>>}
+     */
+    filterBotUserConversations(teamSlug, botId, userId, filterObj, { limit, sort = 'desc' } = {}) {
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/conversations`, filterObj, { params: { limit, sort } })
+                   .then(response => response.data);
+    }
+
+    /**
+     * Lists conversations of a specific bot user.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {?number} [limit]
+     * @param {Zwerm.API.SortOrder} [sort='desc']
+     *
+     * @return {Promise<Zwerm.API.DynamoResult<null, Zwerm.Database.TransactionEntry>>}
+     */
+    listBotUserConversations(teamSlug, botId, userId, { limit, sort = 'desc' } = {}) {
+        return this._zwermRequest.get(`bots/${teamSlug}/${botId}/users/${userId}/conversations`, { params: { limit, sort } })
+                   .then(response => response.data);
+    }
+
     // endregion
     // region bot transactions
     /**
