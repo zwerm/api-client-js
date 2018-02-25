@@ -167,6 +167,37 @@ namespace Zwerm {
             tax_rate: number;
         }
 
+        interface BotInfo {
+            /**
+             * The name of this bot.
+             */
+            name: string;
+            /**
+             * The id of this bot.
+             */
+            botId: string;
+            /**
+             * The name of the team that this bot belongs to.
+             */
+            team: string;
+            /**
+             * The canonical url for accessing this bot, that can be used to easily api calls against this specific bot
+             *
+             * A bots canonical url is made up of their team, followed by their id.
+             */
+            canonical: string;
+            /**
+             * Timestamp of when this bot was created at.
+             */
+            createdAt: string;
+            /**
+             * Timestamp of when this bot was last updated.
+             *
+             * A update is considered to be the changing of any of the bots configuration properties.
+             */
+            updatedAt: string;
+        }
+
         // not needed due to the type, but helps WebStorm until a bug gets fixed
         interface PartialUser {
             id?: number;

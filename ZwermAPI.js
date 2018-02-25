@@ -164,7 +164,7 @@ class ZwermAPI {
     /**
      * List your bots.
      *
-     * @return {Promise<Zwerm.API.Team>}
+     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo> }>}
      */
     listUserBots() {
         return this._zwermRequest.get('/user/bots')
