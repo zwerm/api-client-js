@@ -12,24 +12,61 @@ class ZwermAPI {
 
     /**
      *
-     * @param {string} [zwermUrl=process.env.ZWERM_URL]
-     * @param {string} [bearerToken=process.env.ZWERM_BEARER_TOKEN]
+     * @param {!string} apiUrl
+     * @param {?string} apiToken
      */
-    constructor(zwermUrl = process.env.ZWERM_URL, bearerToken = process.env.ZWERM_BEARER_TOKEN) {
+    constructor(apiUrl, apiToken) {
         /**
          *
-         * @type {string}
+         * @type {!string}
          * @private
          */
-        this._zwermUrl = zwermUrl;
+        this._apiUrl = apiUrl;
         /**
          *
-         * @type {string}
+         * @type {?string}
          * @private
          */
-        this._bearerToken = bearerToken;
+        this._apiToken = apiToken;
     }
 
+    // region getters & setters
+    // region apiUrl (get & set)
+    /**
+     *
+     * @return {!string}
+     */
+    get apiUrl() {
+        return this._apiUrl;
+    }
+
+    /**
+     *
+     * @param {!string} apiUrl
+     */
+    set apiUrl(apiUrl) {
+        this._apiUrl = apiUrl;
+    }
+
+    // endregion
+    // region apiToken (get & set)
+    /**
+     *
+     * @return {?string}
+     */
+    get apiToken() {
+        return this._apiToken;
+    }
+
+    /**
+     *
+     * @param {?string} apiToken
+     */
+    set apiToken(apiToken) {
+        this._apiToken = apiToken;
+    }
+
+    // endregion
     /**
      *
      * @return {AxiosInstance}
@@ -37,13 +74,14 @@ class ZwermAPI {
      */
     get _zwermRequest() {
         return axios.create({
-            baseURL: this._zwermUrl,
+            baseURL: this._apiUrl,
             headers: {
-                Authorization: `Bearer ${this._bearerToken}`
+                Authorization: `Bearer ${this._apiToken}`
             }
         });
     }
 
+    // endregion
     // region bots
     // region bot users
     /**
