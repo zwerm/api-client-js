@@ -186,6 +186,15 @@ class ZwermAPI {
     // todo: createBot(botDetails)
     // todo: getBot(teamSlug, botId)
 
+    /**
+     *
+     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo>, config: BotsSchema.Bots }>}
+     */
+    listAllBots() {
+        return this._zwermRequest.get('/bots')
+                   .then(response => response.data);
+    }
+
     // endregion
     // region teams
     /**
