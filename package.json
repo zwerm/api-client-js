@@ -9,7 +9,9 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "axios": "^0.17.1",
+        "axios": "^0.17.1"
+    },
+    "devDependencies": {
         "stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
     }
 }
