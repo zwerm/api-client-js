@@ -110,7 +110,7 @@ class ZwermAPI {
      * @return {Promise<Zwerm.API.DynamoResult<Zwerm.Database.EvaluatedUserKeys, Zwerm.Database.UserEntry>>}
      */
     filterBotUsers(teamSlug, botId, filterObj, { limit, sort = 'desc' } = {}) {
-        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users`, filterObj, { params: { limit, sort } })
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/filter`, filterObj, { params: { limit, sort } })
                    .then(response => response.data);
     }
 
@@ -143,7 +143,7 @@ class ZwermAPI {
      * @return {Promise<Zwerm.API.DynamoResult<null, Zwerm.Database.ConversationEntry>>}
      */
     filterBotUserConversations(teamSlug, botId, userId, filterObj, { limit, sort = 'desc' } = {}) {
-        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/conversations`, filterObj, { params: { limit, sort } })
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/conversations/filter`, filterObj, { params: { limit, sort } })
                    .then(response => response.data);
     }
 
@@ -178,7 +178,7 @@ class ZwermAPI {
      * @return {Promise<Zwerm.API.DynamoResult<Zwerm.Database.EvaluatedTransactionKeys, Zwerm.Database.TransactionEntry>>}
      */
     filterBotUserTransactions(teamSlug, botId, userId, filterObj, { limit, sort = 'desc' } = {}) {
-        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/transactions`, filterObj, { params: { limit, sort } })
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/transactions/filter`, filterObj, { params: { limit, sort } })
                    .then(response => response.data);
     }
 
