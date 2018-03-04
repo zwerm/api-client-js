@@ -76,7 +76,8 @@ class ZwermAPI {
         return axios.create({
             baseURL: this._apiUrl,
             headers: {
-                Authorization: `Bearer ${this._apiToken}`
+                Authorization: `Bearer ${this._apiToken}`,
+                'X-Clacks-Overhead': 'GNU Terry Pratchett'
             }
         });
     }
