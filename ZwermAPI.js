@@ -164,6 +164,21 @@ class ZwermAPI {
                    .then(response => response.data);
     }
 
+    /**
+     * Get a single conversation of a user of a bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {string} conversationId
+     *
+     * @return {Promise<Zwerm.Database.ConversationEntry>}
+     */
+    getBotUserConversation(teamSlug, botId, userId, conversationId) {
+        return this._zwermRequest.get(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}`)
+                   .then(response => response.data['Item']);
+    }
+
     // endregion
     // region bot transactions
     /**
