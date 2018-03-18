@@ -84,6 +84,20 @@ class ZwermAPI {
 
     // endregion
     /**
+     *
+     * @param {string} apiUrl
+     * @param {string} apiToken
+     *
+     * @return {ZwermAPI}
+     */
+    use({ apiUrl = this.apiUrl, apiToken = this.apiToken } = {}) {
+        this.apiUrl = apiUrl;
+        this.apiToken = apiToken;
+
+        return this;
+    }
+
+    /**
      * Sets the api url in a chain-able manner
      *
      * @param {string} apiUrl
