@@ -12,7 +12,7 @@ class ZwermAPI {
 
     /**
      *
-     * @param {!string} apiUrl
+     * @param {?string} apiUrl
      * @param {?string} apiToken
      */
     constructor(apiUrl, apiToken) {
@@ -84,9 +84,22 @@ class ZwermAPI {
 
     // endregion
     /**
+     * Sets the api url in a chain-able manner
+     *
+     * @param {string} apiUrl
+     *
+     * @return {ZwermAPI}
+     */
+    useUrl(apiUrl) {
+        this.apiUrl = apiUrl;
+
+        return this;
+    }
+
+    /**
      * Sets the api token in a chain-able manner
      *
-     * @param apiToken
+     * @param {string} apiToken
      *
      * @return {ZwermAPI}
      */
