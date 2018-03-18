@@ -83,6 +83,19 @@ class ZwermAPI {
     }
 
     // endregion
+    /**
+     * Sets the api token in a chain-able manner
+     *
+     * @param apiToken
+     *
+     * @return {ZwermAPI}
+     */
+    useToken(apiToken) {
+        this.apiToken = apiToken;
+
+        return this;
+    }
+
     // region bots
     // region bot users
     /**
