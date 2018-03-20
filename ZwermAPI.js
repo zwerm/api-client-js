@@ -278,7 +278,16 @@ class ZwermAPI {
     }
 
     // todo: createBot(botDetails)
-    // todo: getBot(teamSlug, botId)
+    /**
+     * @param {string} teamSlug
+     * @param {string} botId
+     *
+     * @return {Promise<Zwerm.API.BotInfo>}
+     */
+    getSingleBot(teamSlug, botId) {
+        return this._zwermRequest.get(`/bots/${teamSlug}/${botId}`)
+                   .then(response => response.data);
+    }
 
     /**
      *
