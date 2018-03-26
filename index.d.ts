@@ -70,11 +70,6 @@ namespace Zwerm {
             timestamp: string;
         }
 
-        /**
-         * @deprecated
-         */
-        type STaMPTransaction = StaMPTransaction;
-
         class StaMPTransaction<ChildOfStaMPMessage extends StaMP.Protocol.Messages.StaMPMessage> implements TransactionEntry {
             conversationId: string;
             transactionId: string;
