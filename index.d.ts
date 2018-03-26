@@ -1,26 +1,4 @@
 namespace Zwerm {
-    namespace BotChannels {
-        type Channels = {
-            botsocket?: BotSocket
-            facebook?: Facebook,
-
-            [key: string]: any;
-        }
-
-        interface BotSocket {
-        }
-
-        interface Facebook {
-            userId: string;
-            store: {
-                first_name?: string,
-                last_name?: string,
-
-                [key: string]: any;
-            }
-        }
-    }
-
     namespace Database {
         type UserCategory = {
             name: string;
@@ -65,7 +43,7 @@ namespace Zwerm {
             transactionId: string;
             conversationId: string;
             botUserId: string;
-            channel: [keyof BotChannels.Channels];
+            channel: string;
             type: string;
             timestamp: string;
         }
@@ -73,7 +51,7 @@ namespace Zwerm {
         class StaMPTransaction<ChildOfStaMPMessage extends StaMP.Protocol.Messages.StaMPMessage> implements TransactionEntry {
             conversationId: string;
             transactionId: string;
-            channel: [keyof Zwerm.BotChannels.Channels];
+            channel: string;
             botUserId: string;
             type: 'StaMP';
             timestamp: string;
@@ -83,7 +61,7 @@ namespace Zwerm {
         interface UserEntry {
             userId: string;
             botId: string;
-            channels: BotChannels.Channels;
+            channels: object;
             creation: string;
             lastTransactionTime: string;
             lastTransaction: TransactionEntry
