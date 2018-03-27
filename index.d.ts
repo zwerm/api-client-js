@@ -55,22 +55,22 @@ namespace Zwerm {
         }
 
         interface TransactionEntry {
-            transactionId: string;
-            conversationId: string;
             botUserId: string;
-            channel: string;
+            conversationId: string;
+            transactionId: string;
+            channel: ChannelObject | string;
             type: string;
             timestamp: string;
         }
 
-        class StaMPTransaction<ChildOfStaMPMessage extends StaMP.Protocol.Messages.StaMPMessage> implements TransactionEntry {
+        class StaMPTransaction<TypeOfStaMPMessage extends StaMP.Protocol.Messages.StaMPMessage> implements TransactionEntry {
+            botUserId: string;
             conversationId: string;
             transactionId: string;
-            channel: string;
-            botUserId: string;
+            channel: ChannelObject | string;
             type: 'StaMP';
             timestamp: string;
-            message: ChildOfStaMPMessage;
+            message: TypeOfStaMPMessage;
         }
 
         interface ChannelsObject {
@@ -78,8 +78,8 @@ namespace Zwerm {
         }
 
         interface UserEntry {
-            userId: string;
             botId: string;
+            userId: string;
             channels: ChannelsObject;
             creation: string;
             lastTransactionTime: string;
