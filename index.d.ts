@@ -14,6 +14,21 @@ namespace Zwerm {
             [key: string]: any;
         }
 
+        type ChannelStore = {
+            [key: string]: any;
+        }
+
+        type ChannelObject = {
+            id: string;
+            label: string;
+            service: string;
+
+            userId: string;
+            store: ChannelStore;
+
+            [key: string]: any;
+        }
+
         interface EvaluatedUserKeys {
             userId: string;
             botId: string;
@@ -58,10 +73,14 @@ namespace Zwerm {
             message: ChildOfStaMPMessage;
         }
 
+        interface ChannelsObject {
+            [key: string]: ChannelObject
+        }
+
         interface UserEntry {
             userId: string;
             botId: string;
-            channels: object;
+            channels: ChannelsObject;
             creation: string;
             lastTransactionTime: string;
             lastTransaction: TransactionEntry
