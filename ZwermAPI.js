@@ -31,6 +31,13 @@ class ZwermAPI {
     }
 
     // region getters & setters
+    /**
+     * @return {Zwerm.DISABLED_ROUTING}
+     */
+    static get DISABLED_ROUTING() {
+        return '/dev/null';
+    }
+
     // region apiUrl (get & set)
     /**
      *

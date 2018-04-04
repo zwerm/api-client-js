@@ -1,33 +1,113 @@
 namespace Zwerm {
+
+    type DISABLED_ROUTING = '/dev/null';
+
     namespace Database {
-        type UserCategory = {
-            name: string;
-            count: number;
+        interface UserEntry {
+            botId: string;
+            userId: string;
+            creation: DateTime;
+
+            channels?: UserChannels;
+            route?: Zwerm.DISABLED_ROUTING | string;
+            store?: UserStore;
+            markup?: UserMarkup;
+
+            lastTransaction: TransactionEntry
+            lastTransactionTime: DateTime;
+        }
+
+        interface ConversationEntry {
+            botUserId: string;
+            conversationId: string;
+            creation: DateTime;
+
+            store?: ConversationStore;
+
+            expiration?: DateTime;
+            lifetime?: number;
+
+            route?: Zwerm.DISABLED_ROUTING | string;
+
+            firstTransaction: TransactionEntry;
+            firstTransactionTime: DateTime;
+            lastTransaction: TransactionEntry;
+            lastTransactionTime: DateTime;
+        }
+
+        interface TransactionEntry {
+            botUserId: string;
+            transactionId: string;
+            conversationId: string;
+            timestamp: DateTime;
+
+            type: TransactionTypes,
+            message: StaMP.Protocol.Messages.StaMPMessage,
+            metaMessage?: StaMP.Protocol.Messages.StaMPMessage,
+
+            channel?: TransactionChannel;
+            route?: Zwerm.DISABLED_ROUTING | string;
+
+            conversationStore?: ConversationStore;
+            markup?: TransactionMarkup;
+            model?: TransactionModel;
+        }
+
+        interface DataStore {
+            [key: string]: any;
+        }
+
+        type DateTime = string;
+
+        type UserChannels = {
+            [key: string]: UserChannel
+        };
+        type UserChannel = {
+            service: ChannelService;
+            userId?: string;
+            store?: ChannelStore;
+            markup?: ChannelMarkup;
+        };
+        type TransactionChannel = {
+            id: string,
+            service: ChannelService
+        };
+        type ChannelService = 'facebook' | 'botsocket' | 'stamp';
+
+        type UserStore = DataStore;
+        type ChannelStore = DataStore;
+        type ConversationStore = DataStore;
+
+        type UserMarkup = {
+            firstName?: string;
+            lastName?: string;
+            profilePicUrl?: string;
+            timezone?: string;
+            language?: string;
+            local?: string;
+            language?: string;
+            email?: string;
+            phone?: string;
+
+            conversationCount?: number;
+            messageCount?: number;
+        }
+        type ChannelMarkup = {
+            [key: string]: any;
+        };
+        type TransactionMarkup = {
+            lang?: AWS.Comprehend.Language;
+            languages?: Array<AWS.Comprehend.Language>;
+            entities?: Array<AWS.Comprehend.Entity>;
+            keyPhrases?: Array<AWS.Comprehend.KeyPhrase>;
+            sentiment?: AWS.Comprehend.Sentiment;
         };
 
-        type UserStore = {
-            location?: string,
-            categories?: Array<UserCategory>,
-            lat?: number,
-            lng?: number,
-
+        type TransactionModel = {
             [key: string]: any;
-        }
+        };
 
-        type ChannelStore = {
-            [key: string]: any;
-        }
-
-        type ChannelObject = {
-            id: string;
-            label: string;
-            service: string;
-
-            userId: string;
-            store: ChannelStore;
-
-            [key: string]: any;
-        }
+        type TransactionTypes = 'StaMP';
 
         interface EvaluatedUserKeys {
             userId: string;
@@ -41,50 +121,65 @@ namespace Zwerm {
             timestamp: string;
         }
 
-        interface ConversationEntry {
-            botUserId: string;
-            conversationId: string;
-            firstTransactionTime: string;
-            firstTransaction: Zwerm.Database.TransactionEntry,
-            lastTransaction: Zwerm.Database.TransactionEntry,
-            lastTransactionTime: string;
-            creation: string;
-            lifetime: number
-            expiration: string;
-            data: Array,
-        }
-
-        interface TransactionEntry {
-            botUserId: string;
-            conversationId: string;
-            transactionId: string;
-            channel: ChannelObject | string;
-            type: string;
-            timestamp: string;
-        }
-
         class StaMPTransaction<TypeOfStaMPMessage extends StaMP.Protocol.Messages.StaMPMessage> implements TransactionEntry {
             botUserId: string;
             conversationId: string;
             transactionId: string;
-            channel: ChannelObject | string;
             type: 'StaMP';
             timestamp: string;
             message: TypeOfStaMPMessage;
         }
 
+        /**
+         * @deprecated in favor of {@link Zwerm.Database.UserChannels}
+         */
         interface ChannelsObject {
             [key: string]: ChannelObject
         }
 
-        interface UserEntry {
-            botId: string;
+        /**
+         * @deprecated in favor of {@link Zwerm.Database.UserChannel}
+         */
+        type ChannelObject = {
+            label: string;
+            service: string;
+
             userId: string;
-            channels: ChannelsObject;
-            creation: string;
-            lastTransactionTime: string;
-            lastTransaction: TransactionEntry
-            store: UserStore;
+            store: ChannelStore;
+
+            [key: string]: any;
+        };
+    }
+
+    namespace AWS {
+        namespace Comprehend {
+            type Language = {
+                LanguageCode?: string
+                Score?: number
+            }
+            type Entity = {
+                BeginOffset?: number;
+                EndOffset?: number;
+                Score?: number;
+                Text?: string;
+                Type?: string;
+            }
+            type KeyPhrase = {
+                BeginOffset?: number;
+                EndOffset?: number;
+                Score?: number;
+                Text?: string;
+            }
+            type Sentiment = {
+                Sentiment: string;
+                SentimentScore: SentimentScore
+            }
+            type SentimentScore = {
+                Mixed?: number;
+                Positive?: number;
+                Neutral?: number;
+                Negative?: number
+            }
         }
     }
 
