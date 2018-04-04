@@ -1,4 +1,7 @@
 namespace Zwerm {
+
+    type DISABLED_ROUTING = '/dev/null';
+
     namespace Database {
         interface UserEntry {
             botId: string;
@@ -6,7 +9,7 @@ namespace Zwerm {
             creation: string;
 
             channels?: UserChannels;
-            route?: string;
+            route?: Zwerm.DISABLED_ROUTING | string;
             store?: UserStore;
             markup?: UserMarkup;
 
@@ -24,7 +27,7 @@ namespace Zwerm {
             expiration?: string;
             lifetime?: number;
 
-            route?: string;
+            route?: Zwerm.DISABLED_ROUTING | string;
 
             firstTransaction: TransactionEntry;
             firstTransactionTime: string;
@@ -43,7 +46,7 @@ namespace Zwerm {
             metaMessage?: StaMP.Protocol.Messages.StaMPMessage,
 
             channel?: TransactionChannel;
-            route?: string;
+            route?: Zwerm.DISABLED_ROUTING | string;
 
             conversationStore?: ConversationStore;
             markup?: TransactionMarkup;
