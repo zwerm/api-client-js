@@ -6,7 +6,7 @@ namespace Zwerm {
         interface UserEntry {
             botId: string;
             userId: string;
-            creation: string;
+            creation: DateTime;
 
             channels?: UserChannels;
             route?: Zwerm.DISABLED_ROUTING | string;
@@ -14,34 +14,34 @@ namespace Zwerm {
             markup?: UserMarkup;
 
             lastTransaction: TransactionEntry
-            lastTransactionTime: string;
+            lastTransactionTime: DateTime;
         }
 
         interface ConversationEntry {
             botUserId: string;
             conversationId: string;
-            creation: string;
+            creation: DateTime;
 
             store?: ConversationStore;
 
-            expiration?: string;
+            expiration?: DateTime;
             lifetime?: number;
 
             route?: Zwerm.DISABLED_ROUTING | string;
 
             firstTransaction: TransactionEntry;
-            firstTransactionTime: string;
+            firstTransactionTime: DateTime;
             lastTransaction: TransactionEntry;
-            lastTransactionTime: string;
+            lastTransactionTime: DateTime;
         }
 
         interface TransactionEntry {
             botUserId: string;
             transactionId: string;
             conversationId: string;
-            timestamp: string;
+            timestamp: DateTime;
 
-            type: string,
+            type: TransactionTypes,
             message: StaMP.Protocol.Messages.StaMPMessage,
             metaMessage?: StaMP.Protocol.Messages.StaMPMessage,
 
@@ -57,19 +57,22 @@ namespace Zwerm {
             [key: string]: any;
         }
 
+        type DateTime = string;
+
         type UserChannels = {
             [key: string]: UserChannel
         };
         type UserChannel = {
-            service: string;
+            service: ChannelService;
             userId?: string;
             store?: ChannelStore;
             markup?: ChannelMarkup;
         };
         type TransactionChannel = {
             id: string,
-            service: string
+            service: ChannelService
         };
+        type ChannelService = 'facebook' | 'botsocket' | 'stamp';
 
         type UserStore = DataStore;
         type ChannelStore = DataStore;
@@ -103,6 +106,8 @@ namespace Zwerm {
         type TransactionModel = {
             [key: string]: any;
         };
+
+        type TransactionTypes = 'StaMP';
 
         interface EvaluatedUserKeys {
             userId: string;
