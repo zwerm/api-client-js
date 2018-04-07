@@ -1,4 +1,4 @@
-export namespace Zwerm {
+export declare namespace Zwerm {
 
     type DISABLED_ROUTING = '/dev/null';
     type ROUTE_DELIMITER = '/';
