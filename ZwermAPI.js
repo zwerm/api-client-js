@@ -185,6 +185,54 @@ class ZwermAPI {
                    .then(response => response.data['Item']);
     }
 
+    /**
+     * Get the markup for the a user of a bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     *
+     * @return {Promise<Zwerm.Database.UserMarkup>}
+     */
+    getBotUserMarkup(teamSlug, botId, userId) {
+        return this._zwermRequest.get(`bots/${teamSlug}/${botId}/users/${userId}/markup`)
+                   .then(response => response.data);
+    }
+
+    /**
+     * Update the markup for the a user of a bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     *
+     * @return {Promise<Zwerm.Database.UserMarkup>}
+     */
+    updateBotUserMarkup(teamSlug, botId, userId) {
+        return this._zwermRequest.put(`bots/${teamSlug}/${botId}/users/${userId}/markup`)
+                   .then(response => response.data);
+    }
+
+    /**
+     * Get the markup for the a user of a bot. Force update if no data is returned.
+     * We recommend this method as the most efficient way to retrieve user markup data unless the most up to data is needed.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     *
+     * @return {Promise<Zwerm.Database.UserMarkup>}
+     */
+    getOrUpdateBotUserMarkup(teamSlug, botId, userId) {
+        return this.getBotUserMarkup(teamSlug, botId, userId)
+                   .then(markup => {
+                       if (!markup || Object.keys(markup).length === 0) {
+                           return this.updateBotUserMarkup(teamSlug, botId, userId);
+                       }
+                       return markup;
+                   });
+    }
+
     // endregion
     // region bot conversations
     /**
