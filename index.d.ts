@@ -153,6 +153,8 @@ export declare namespace Zwerm {
     }
 
     namespace AWS {
+        type SentimentType = 'POSITIVE' | 'NEGATIVE' | 'NEUTRAL' | 'MIXED' | string;
+
         namespace Comprehend {
             type Language = {
                 LanguageCode?: string
@@ -172,7 +174,7 @@ export declare namespace Zwerm {
                 Text?: string;
             }
             type Sentiment = {
-                Sentiment: string;
+                Sentiment: SentimentType;
                 SentimentScore: SentimentScore
             }
             type SentimentScore = {
