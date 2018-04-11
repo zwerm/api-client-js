@@ -1,7 +1,7 @@
 'use strict';
 
 /** @type {AxiosStatic} */
-const axios = require('axios');
+const axios = require('axios').default;
 
 // var testZwerm = require('./env.js')
 
@@ -318,6 +318,105 @@ class ZwermAPI {
                    .then(response => response.data);
     }
 
+    // endregion
+    // region bot routing
+    // region user routing
+    /**
+     * Gets the current route of the given user for the given bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     *
+     * @return {Promise<string>}
+     */
+    getCurrentRouteForUser(teamSlug, botId, userId) {
+        return this._zwermRequest.get(`bots/${teamSlug}/${botId}/users/${userId}/route`)
+                   .then(response => response.data['route']);
+    }
+
+    /**
+     * Puts the given route as the current route of the given user for the given bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {string} route
+     *
+     * @return {Promise<string>}
+     */
+    putCurrentRouteForUser(teamSlug, botId, userId, route) {
+        return this._zwermRequest.put(`bots/${teamSlug}/${botId}/users/${userId}/route`, { route })
+                   .then(response => response.data['route']);
+    }
+
+    /**
+     * Deletes the current route of the given user for the given bot.
+     *
+     * This will restore the routing back to it's original, default value.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     *
+     * @return {Promise<string>}
+     */
+    deleteCurrentRouteForUser(teamSlug, botId, userId) {
+        return this._zwermRequest.delete(`bots/${teamSlug}/${botId}/users/${userId}/route`)
+                   .then(response => response.data);
+    }
+
+    // endregion
+    // region conversation routing
+    /**
+     * Gets the current route of the given conversation for the given user of the given bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {string} conversationId
+     *
+     * @return {Promise<string>}
+     */
+    getCurrentRouteForConversation(teamSlug, botId, userId, conversationId) {
+        return this._zwermRequest.get(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}/route`)
+                   .then(response => response.data['route']);
+    }
+
+    /**
+     * Puts the given route as the current route of the given conversation for the given user for the given bot.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {string} conversationId
+     * @param {string} route
+     *
+     * @return {Promise<string>}
+     */
+    putCurrentRouteForCoversation(teamSlug, botId, userId, conversationId, route) {
+        return this._zwermRequest.put(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}/route`, { route })
+                   .then(response => response.data['route']);
+    }
+
+    /**
+     * Deletes the current route of the given conversation for the given user for the given bot.
+     *
+     * This will restore the routing back to it's original, default value.
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {string} conversationId
+     *
+     * @return {Promise<string>}
+     */
+    deleteCurrentRouteForCoversation(teamSlug, botId, userId, conversationId) {
+        return this._zwermRequest.delete(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}/route`)
+                   .then(response => response.data);
+    }
+
+    // endregion
     // endregion
     /**
      * List your bots.
