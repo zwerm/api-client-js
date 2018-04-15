@@ -106,6 +106,8 @@ class ZwermAPI {
      *
      * @return {ZwermAPI}
      */
+
+    // region configuration
     use({ apiUrl = this.apiUrl, apiToken = this.apiToken } = {}) {
         this.apiUrl = apiUrl;
         this.apiToken = apiToken;
@@ -138,6 +140,8 @@ class ZwermAPI {
 
         return this;
     }
+
+    //endregion
 
     // region bots
     // region bot users
@@ -319,6 +323,53 @@ class ZwermAPI {
     }
 
     // endregion
+    // region list bots
+    /**
+     * List your bots.
+     *
+     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo> }>}
+     */
+    listUserBots() {
+        return this._zwermRequest.get('/user/bots')
+                   .then(response => response.data);
+    }
+
+    /**
+     * List your bots.
+     *
+     * @param {string} teamSlug
+     *
+     * @return {Promise<Zwerm.API.Team>}
+     */
+    listTeamBots(teamSlug) {
+        return this._zwermRequest.get(`/teams/${teamSlug}/bots`)
+                   .then(response => response.data);
+    }
+
+    // todo: createBot(botDetails)
+    /**
+     * @param {string} teamSlug
+     * @param {string} botId
+     *
+     * @return {Promise<Zwerm.API.BotInfo>}
+     */
+    getSingleBot(teamSlug, botId) {
+        return this._zwermRequest.get(`/bots/${teamSlug}/${botId}`)
+                   .then(response => response.data);
+    }
+
+    /**
+     *
+     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo>, config: BotsSchema.Bots }>}
+     */
+    listAllBots() {
+        return this._zwermRequest.get('/bots')
+                   .then(response => response.data);
+    }
+
+    // endregion
+    // endregion
+
     // region bot routing
     // region user routing
     /**
@@ -418,50 +469,7 @@ class ZwermAPI {
 
     // endregion
     // endregion
-    /**
-     * List your bots.
-     *
-     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo> }>}
-     */
-    listUserBots() {
-        return this._zwermRequest.get('/user/bots')
-                   .then(response => response.data);
-    }
 
-    /**
-     * List your bots.
-     *
-     * @param {string} teamSlug
-     *
-     * @return {Promise<Zwerm.API.Team>}
-     */
-    listTeamBots(teamSlug) {
-        return this._zwermRequest.get(`/teams/${teamSlug}/bots`)
-                   .then(response => response.data);
-    }
-
-    // todo: createBot(botDetails)
-    /**
-     * @param {string} teamSlug
-     * @param {string} botId
-     *
-     * @return {Promise<Zwerm.API.BotInfo>}
-     */
-    getSingleBot(teamSlug, botId) {
-        return this._zwermRequest.get(`/bots/${teamSlug}/${botId}`)
-                   .then(response => response.data);
-    }
-
-    /**
-     *
-     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo>, config: BotsSchema.Bots }>}
-     */
-    listAllBots() {
-        return this._zwermRequest.get('/bots')
-                   .then(response => response.data);
-    }
-
-    // endregion
     // region teams
     /**
      * List your teams
@@ -474,6 +482,7 @@ class ZwermAPI {
     }
 
     // endregion
+
     // region authenticated user
     /**
      * Get the authenticated user.
