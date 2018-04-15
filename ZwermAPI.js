@@ -2,6 +2,7 @@
 
 /** @type {AxiosStatic} */
 const axios = require('axios').default;
+const qs = require('qs');
 
 // var testZwerm = require('./env.js')
 
@@ -106,6 +107,8 @@ class ZwermAPI {
      *
      * @return {ZwermAPI}
      */
+
+    // region configuration
     use({ apiUrl = this.apiUrl, apiToken = this.apiToken } = {}) {
         this.apiUrl = apiUrl;
         this.apiToken = apiToken;
@@ -138,6 +141,8 @@ class ZwermAPI {
 
         return this;
     }
+
+    //endregion
 
     // region bots
     // region bot users
@@ -319,6 +324,53 @@ class ZwermAPI {
     }
 
     // endregion
+    // region list bots
+    /**
+     * List your bots.
+     *
+     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo> }>}
+     */
+    listUserBots() {
+        return this._zwermRequest.get('/user/bots')
+                   .then(response => response.data);
+    }
+
+    /**
+     * List your bots.
+     *
+     * @param {string} teamSlug
+     *
+     * @return {Promise<Zwerm.API.Team>}
+     */
+    listTeamBots(teamSlug) {
+        return this._zwermRequest.get(`/teams/${teamSlug}/bots`)
+                   .then(response => response.data);
+    }
+
+    // todo: createBot(botDetails)
+    /**
+     * @param {string} teamSlug
+     * @param {string} botId
+     *
+     * @return {Promise<Zwerm.API.BotInfo>}
+     */
+    getSingleBot(teamSlug, botId) {
+        return this._zwermRequest.get(`/bots/${teamSlug}/${botId}`)
+                   .then(response => response.data);
+    }
+
+    /**
+     *
+     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo>, config: BotsSchema.Bots }>}
+     */
+    listAllBots() {
+        return this._zwermRequest.get('/bots')
+                   .then(response => response.data);
+    }
+
+    // endregion
+    // endregion
+
     // region bot routing
     // region user routing
     /**
@@ -418,50 +470,58 @@ class ZwermAPI {
 
     // endregion
     // endregion
-    /**
-     * List your bots.
-     *
-     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo> }>}
-     */
-    listUserBots() {
-        return this._zwermRequest.get('/user/bots')
-                   .then(response => response.data);
-    }
 
+    // region metrics
     /**
-     * List your bots.
+     * Request a set of metrics for a bot.
      *
-     * @param {string} teamSlug
+     * @example <caption>Request the same metric multiple times with different configurations.</caption>
+     * zwerm.getBotMetrics('my-team', 'my-bot',
+     *     {activeUsers: {interval: '1d', start: '2018-04-01T00:00:00.000Z', end: '2018-05-01T00:00:00.000Z'}},
+     *     {activeUsers: {start: '2018-04-01T00:00:00.000Z', end: '2018-04-02T00:00:00.000Z'}}
+     * ).then(console.log);
      *
-     * @return {Promise<Zwerm.API.Team>}
-     */
-    listTeamBots(teamSlug) {
-        return this._zwermRequest.get(`/teams/${teamSlug}/bots`)
-                   .then(response => response.data);
-    }
-
-    // todo: createBot(botDetails)
-    /**
      * @param {string} teamSlug
      * @param {string} botId
+     * @param {Object<string, Object<string, string>>} [metrics=[]]
      *
-     * @return {Promise<Zwerm.API.BotInfo>}
+     * @return {Promise<AxiosResponse<Object>>}
      */
-    getSingleBot(teamSlug, botId) {
-        return this._zwermRequest.get(`/bots/${teamSlug}/${botId}`)
-                   .then(response => response.data);
-    }
+    getBotMetrics(teamSlug, botId, ...metrics) {
+        let index = 0;
+        const keys = {};
+        const options = {};
 
-    /**
-     *
-     * @return {Promise<{ bots: Array<Zwerm.API.BotInfo>, config: BotsSchema.Bots }>}
-     */
-    listAllBots() {
-        return this._zwermRequest.get('/bots')
+        // For all requested metric objects
+        metrics.forEach(metric => {
+            // go through all keys (they can have more than one, event though it is not recommended)
+            Object.keys(metric).forEach(key => {
+                // store the metric key name with the matching index
+                keys[index] = key;
+
+                // go through all the options
+                Object.keys(metric[key]).forEach(option => {
+                    // store the option with the matching index
+                    options[option] = options[option] || {};
+                    options[option][index] = metric[key][option];
+                });
+
+                // up the index for the next round.
+                index++;
+            });
+        });
+
+        return this._zwermRequest
+                   .get(`metrics/${teamSlug}/${botId}`, {
+                       params: Object.assign(options, { metrics: keys }),
+                       // we need to use a serializer that converts the objects to arrays, instead of encoding them
+                       paramsSerializer: params => qs.stringify(params, { encode: false })
+                   })
                    .then(response => response.data);
     }
 
     // endregion
+
     // region teams
     /**
      * List your teams
@@ -474,6 +534,7 @@ class ZwermAPI {
     }
 
     // endregion
+
     // region authenticated user
     /**
      * Get the authenticated user.
