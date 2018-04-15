@@ -2,6 +2,7 @@
 
 /** @type {AxiosStatic} */
 const axios = require('axios').default;
+const qs = require('qs');
 
 // var testZwerm = require('./env.js')
 
@@ -468,6 +469,57 @@ class ZwermAPI {
     }
 
     // endregion
+    // endregion
+
+    // region metrics
+    /**
+     * Request a set of metrics for a bot.
+     *
+     * @example <caption>Request the same metric multiple times with different configurations.</caption>
+     * zwerm.getBotMetrics('my-team', 'my-bot',
+     *     {activeUsers: {interval: '1d', start: '2018-04-01T00:00:00.000Z', end: '2018-05-01T00:00:00.000Z'}},
+     *     {activeUsers: {start: '2018-04-01T00:00:00.000Z', end: '2018-04-02T00:00:00.000Z'}}
+     * ).then(console.log);
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {Object<string, Object<string, string>>} [metrics=[]]
+     *
+     * @return {Promise<AxiosResponse<Object>>}
+     */
+    getBotMetrics(teamSlug, botId, ...metrics) {
+        let index = 0;
+        const keys = {};
+        const options = {};
+
+        // For all requested metric objects
+        metrics.forEach(metric => {
+            // go through all keys (they can have more than one, event though it is not recommended)
+            Object.keys(metric).forEach(key => {
+                // store the metric key name with the matching index
+                keys[index] = key;
+
+                // go through all the options
+                Object.keys(metric[key]).forEach(option => {
+                    // store the option with the matching index
+                    options[option] = options[option] || {};
+                    options[option][index] = metric[key][option];
+                });
+
+                // up the index for the next round.
+                index++;
+            });
+        });
+
+        return this._zwermRequest
+                   .get(`metrics/${teamSlug}/${botId}`, {
+                       params: Object.assign(options, { metrics: keys }),
+                       // we need to use a serializer that converts the objects to arrays, instead of encoding them
+                       paramsSerializer: params => qs.stringify(params, { encode: false })
+                   })
+                   .then(response => response.data);
+    }
+
     // endregion
 
     // region teams
