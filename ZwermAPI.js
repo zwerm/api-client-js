@@ -551,6 +551,27 @@ class ZwermAPI {
     }
 
     // endregion
+    // region send letter
+    /**
+     *
+     * @param {string} teamSlug
+     * @param {string} botId
+     * @param {string} userId
+     * @param {string} conversationId
+     * @param {string} channelId
+     * @param {StaMP.Protocol.Letter} letter
+     *
+     * @return {Promise}
+     */
+    postLetter(teamSlug, botId, userId, conversationId, channelId, letter) {
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}/transaction`, {
+                       channelId,
+                       letter
+                   })
+                   .then(response => response.data);
+    }
+
+    // endregion
 }
 
 module.exports = ZwermAPI;
