@@ -4,8 +4,6 @@
 const axios = require('axios').default;
 const qs = require('qs');
 
-// var testZwerm = require('./env.js')
-
 /**
  *
  */
@@ -100,6 +98,7 @@ class ZwermAPI {
     }
 
     // endregion
+    // region configuration
     /**
      *
      * @param {string} apiUrl
@@ -107,8 +106,6 @@ class ZwermAPI {
      *
      * @return {ZwermAPI}
      */
-
-    // region configuration
     use({ apiUrl = this.apiUrl, apiToken = this.apiToken } = {}) {
         this.apiUrl = apiUrl;
         this.apiToken = apiToken;
@@ -143,7 +140,6 @@ class ZwermAPI {
     }
 
     //endregion
-
     // region bots
     // region bot users
     /**
@@ -370,7 +366,6 @@ class ZwermAPI {
 
     // endregion
     // endregion
-
     // region bot routing
     // region user routing
     /**
@@ -470,7 +465,6 @@ class ZwermAPI {
 
     // endregion
     // endregion
-
     // region metrics
     /**
      * Request a set of metrics for a bot.
@@ -521,7 +515,6 @@ class ZwermAPI {
     }
 
     // endregion
-
     // region teams
     /**
      * List your teams
@@ -534,7 +527,6 @@ class ZwermAPI {
     }
 
     // endregion
-
     // region authenticated user
     /**
      * Get the authenticated user.
