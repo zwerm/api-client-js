@@ -3,6 +3,7 @@ export declare namespace Zwerm {
     type DISABLED_ROUTING = '/dev/null';
     type ROUTE_DELIMITER = '/';
 
+    // region namespace: Database
     namespace Database {
         interface UserEntry {
             botId: string;
@@ -151,7 +152,8 @@ export declare namespace Zwerm {
             [key: string]: any;
         };
     }
-
+    // endregion
+    // region namespace: AWS
     namespace AWS {
         type SentimentType = 'POSITIVE' | 'NEGATIVE' | 'NEUTRAL' | 'MIXED' | string;
 
@@ -185,7 +187,8 @@ export declare namespace Zwerm {
             }
         }
     }
-
+    // endregion
+    // region namespace: API
     namespace API {
         interface DynamoFilter<Entry> {
             condition: string;
@@ -324,4 +327,5 @@ export declare namespace Zwerm {
 
         type PartialUser = Partial<User>
     }
+    // endregion
 }
