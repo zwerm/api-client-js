@@ -1,7 +1,10 @@
 {
     "name": "@zwerm/zwermapi-client",
     "version": "0.1.0",
+    "private" : false,
     "description": "Client for using the ZwermAPI",
+    "license": "ISC",
+    "author": "",
     "main": "ZwermAPI.js",
     "repository" : {
         "type" : "git",
@@ -10,8 +13,6 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "",
-    "license": "ISC",
     "dependencies": {
         "axios": "^0.18.0",
         "qs": "^6.5.1"
