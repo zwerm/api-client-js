@@ -11,7 +11,7 @@ class ZwermAPI {
 
     /**
      *
-     * @param {?string} apiUrl
+     * @param {!string} apiUrl
      * @param {?string} apiToken
      */
     constructor(apiUrl, apiToken) {
