@@ -1,17 +1,17 @@
 {
     "name": "@zwerm/zwermapi-client",
     "version": "0.1.0",
-    "private" : false,
+    "private": false,
     "description": "Client for using the ZwermAPI",
-    "license": "ISC",
-    "author": "",
-    "main": "ZwermAPI.js",
-    "repository" : {
-        "type" : "git",
-        "url" : "git@github.com:Zwerm/api-client-js.git"
-    },
-    "bugs" : {
+    "bugs": {
         "url": "https://github.com/Zwerm/api-client-js/issues"
+    },
+    "license": "ISC",
+    "author": "Gareth Jones",
+    "main": "ZwermAPI.js",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:Zwerm/api-client-js.git"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +21,7 @@
         "qs": "^6.5.1"
     },
     "optionalDependencies": {
-        "stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
+        "@stampit/stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
     },
     "engines": {
         "node": ">=8.0.0"
