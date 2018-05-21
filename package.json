@@ -20,6 +20,9 @@
         "axios": "^0.18.0",
         "qs": "^6.5.2"
     },
+    "devDependencies": {
+        "@types/qs": "^6.5.1"
+    },
     "optionalDependencies": {
         "@stampit/stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
     },
