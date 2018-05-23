@@ -116,7 +116,7 @@ export declare namespace Zwerm {
             [key: string]: any;
         };
 
-        type TransactionTypes = 'StaMP';
+        type TransactionTypes = 'StaMP' | 'event';
 
         interface EvaluatedUserKeys {
             userId: string;
