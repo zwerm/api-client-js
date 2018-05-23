@@ -1,3 +1,5 @@
+import { StaMP } from '@stampit/stamp';
+
 export declare namespace Zwerm {
 
     type DISABLED_ROUTING = '/dev/null';
@@ -14,6 +16,11 @@ export declare namespace Zwerm {
             route?: Zwerm.DISABLED_ROUTING | string;
             store?: UserStore;
             markup?: UserMarkup;
+
+            firstConversation: ConversationEntry;
+            firstConversationTime: DateTime;
+            lastConversation: ConversationEntry;
+            lastConversationTime: DateTime;
 
             lastTransaction: TransactionEntry
             lastTransactionTime: DateTime;
