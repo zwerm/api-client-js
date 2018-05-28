@@ -158,26 +158,6 @@ export declare namespace Zwerm {
             timestamp: string;
             message: TypeOfStaMPMessage;
         }
-
-        /**
-         * @deprecated in favor of {@link Zwerm.Database.UserChannels}
-         */
-        interface ChannelsObject {
-            [key: string]: ChannelObject
-        }
-
-        /**
-         * @deprecated in favor of {@link Zwerm.Database.UserChannel}
-         */
-        type ChannelObject = {
-            label: string;
-            service: string;
-
-            userId: string;
-            store: ChannelStore;
-
-            [key: string]: any;
-        };
     }
     // endregion
     // region namespace: AWS
