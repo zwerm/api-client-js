@@ -84,16 +84,19 @@ export declare namespace Zwerm {
         type UserChannels = {
             [key: string]: UserChannel
         };
-        type UserChannel = {
+
+        interface UserChannel {
             service: ChannelService;
             userId?: string;
             store?: ChannelStore;
             markup?: ChannelMarkup;
-        };
-        type TransactionChannel = {
-            id: string,
-            service: ChannelService
-        };
+        }
+
+        interface TransactionChannel {
+            service: ChannelService;
+            id: string;
+            userId?: string;
+        }
 
         // endregion
         // region store interfaces
