@@ -65,10 +65,6 @@ export declare namespace Zwerm {
 
         // endregion
 
-        interface DataStore {
-            [key: string]: any;
-        }
-
         // region channels interfaces
         type DateTime = string;
 
@@ -89,6 +85,10 @@ export declare namespace Zwerm {
 
         // endregion
         // region store interfaces
+        interface DataStore {
+            [key: string]: any;
+        }
+
         type UserStore = DataStore;
         type ChannelStore = DataStore;
         type ConversationStore = DataStore;
