@@ -9,6 +9,19 @@ export declare namespace Zwerm {
     namespace Database {
         type DateTime = string;
 
+        type TransactionTypes =
+            | 'StaMP'
+            | 'event'
+            ;
+
+        type ChannelService =
+            | 'stamp'
+            | 'facebook'
+            | 'webchat'
+            | 'kik'
+            | 'skype'
+            ;
+
         // region entries
         interface UserEntry {
             botId: string;
@@ -81,7 +94,6 @@ export declare namespace Zwerm {
             id: string,
             service: ChannelService
         };
-        type ChannelService = 'facebook' | 'botsocket' | 'stamp';
 
         // endregion
         // region store interfaces
@@ -123,8 +135,6 @@ export declare namespace Zwerm {
         type TransactionModel = {
             [key: string]: any;
         };
-
-        type TransactionTypes = 'StaMP' | 'event';
 
         interface EvaluatedUserKeys {
             userId: string;
