@@ -66,9 +66,9 @@ export declare namespace Zwerm {
             conversationId: string;
             timestamp: ZwermDateTime;
 
-            type: TransactionTypes,
-            message: StaMP.Protocol.Messages.StaMPMessage,
-            metaMessage?: StaMP.Protocol.Messages.StaMPMessage,
+            type: TransactionTypes;
+            message: StaMP.Protocol.Messages.StaMPMessage;
+            metaMessage: StaMP.Protocol.Messages.StaMPMessage | null;
 
             channel?: TransactionChannel;
             route?: Zwerm.DISABLED_ROUTING | string;
