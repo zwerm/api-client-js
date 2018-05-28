@@ -150,7 +150,7 @@ export declare namespace Zwerm {
             timestamp: string;
         }
 
-        class StaMPTransaction<TypeOfStaMPMessage extends StaMP.Protocol.Messages.StaMPMessage> implements TransactionEntry {
+        interface StaMPTransaction<TypeOfStaMPMessage extends StaMP.Protocol.Messages.StaMPMessage> extends TransactionEntry {
             botUserId: string;
             conversationId: string;
             transactionId: string;
