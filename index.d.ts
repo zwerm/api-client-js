@@ -7,6 +7,8 @@ export declare namespace Zwerm {
 
     // region namespace: Database
     namespace Database {
+        type DateTime = string;
+
         // region entries
         interface UserEntry {
             botId: string;
@@ -66,8 +68,6 @@ export declare namespace Zwerm {
         // endregion
 
         // region channels interfaces
-        type DateTime = string;
-
         type UserChannels = {
             [key: string]: UserChannel
         };
