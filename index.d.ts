@@ -7,6 +7,7 @@ export declare namespace Zwerm {
 
     // region namespace: Database
     namespace Database {
+        // region entries
         interface UserEntry {
             botId: string;
             userId: string;
@@ -62,10 +63,13 @@ export declare namespace Zwerm {
             model?: TransactionModel;
         }
 
+        // endregion
+
         interface DataStore {
             [key: string]: any;
         }
 
+        // region channels interfaces
         type DateTime = string;
 
         type UserChannels = {
@@ -83,10 +87,13 @@ export declare namespace Zwerm {
         };
         type ChannelService = 'facebook' | 'botsocket' | 'stamp';
 
+        // endregion
+        // region store interfaces
         type UserStore = DataStore;
         type ChannelStore = DataStore;
         type ConversationStore = DataStore;
-
+        // endregion
+        // region markup interfaces
         type UserMarkup = {
             firstName?: string;
             lastName?: string;
@@ -111,6 +118,7 @@ export declare namespace Zwerm {
             keyPhrases?: Array<AWS.Comprehend.KeyPhrase>;
             sentiment?: AWS.Comprehend.Sentiment;
         };
+        // endregion
 
         type TransactionModel = {
             [key: string]: any;
