@@ -7,7 +7,7 @@ export declare namespace Zwerm {
 
     // region namespace: Database
     namespace Database {
-        type DateTime = string;
+        type ZwermDateTime = string;
 
         type TransactionTypes =
             | 'StaMP'
@@ -22,11 +22,11 @@ export declare namespace Zwerm {
             | 'skype'
             ;
 
-        // region entries
+        // region entry interfaces
         interface UserEntry {
             botId: string;
             userId: string;
-            creation: DateTime;
+            creation: ZwermDateTime;
 
             channels?: UserChannels;
             route?: Zwerm.DISABLED_ROUTING | string;
@@ -34,37 +34,37 @@ export declare namespace Zwerm {
             markup?: UserMarkup;
 
             firstConversation: ConversationEntry;
-            firstConversationTime: DateTime;
+            firstConversationTime: ZwermDateTime;
             lastConversation: ConversationEntry;
-            lastConversationTime: DateTime;
+            lastConversationTime: ZwermDateTime;
 
             lastTransaction: TransactionEntry
-            lastTransactionTime: DateTime;
+            lastTransactionTime: ZwermDateTime;
         }
 
         interface ConversationEntry {
             botUserId: string;
             conversationId: string;
-            creation: DateTime;
+            creation: ZwermDateTime;
 
             store?: ConversationStore;
 
-            expiration?: DateTime;
+            expiration?: ZwermDateTime;
             lifetime?: number;
 
             route?: Zwerm.DISABLED_ROUTING | string;
 
             firstTransaction: TransactionEntry;
-            firstTransactionTime: DateTime;
+            firstTransactionTime: ZwermDateTime;
             lastTransaction: TransactionEntry;
-            lastTransactionTime: DateTime;
+            lastTransactionTime: ZwermDateTime;
         }
 
         interface TransactionEntry {
             botUserId: string;
             transactionId: string;
             conversationId: string;
-            timestamp: DateTime;
+            timestamp: ZwermDateTime;
 
             type: TransactionTypes,
             message: StaMP.Protocol.Messages.StaMPMessage,
@@ -79,7 +79,6 @@ export declare namespace Zwerm {
         }
 
         // endregion
-
         // region channels interfaces
         type UserChannels = {
             [key: string]: UserChannel
