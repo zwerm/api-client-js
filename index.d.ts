@@ -20,6 +20,7 @@ export declare namespace Zwerm {
             | 'webchat'
             | 'kik'
             | 'skype'
+            | string
             ;
 
         // region entry interfaces
