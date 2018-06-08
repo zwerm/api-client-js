@@ -336,4 +336,26 @@ export declare namespace Zwerm {
         type PartialUser = Partial<User>
     }
     // endregion
+    // region namespace: events
+    namespace Events {
+
+        // region namespace: UnknownMessageEvent
+        type UNKNOWN_MESSAGE = 'zwerm.unknown';
+        type UnknownMessageEvent = UnknownMessageEvent.UnknownMessageEvent;
+
+        namespace UnknownMessageEvent {
+            interface UnknownMessageEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<UnknownMessageEventData> {
+                event: UNKNOWN_MESSAGE;
+            }
+
+            interface UnknownMessageEventData {
+                /**
+                 * JSON string of the original message
+                 */
+                originalMessage: string;
+            }
+        }
+        // endregion
+    }
+    // endregion
 }
