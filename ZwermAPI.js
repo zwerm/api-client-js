@@ -46,6 +46,14 @@ class ZwermAPI {
         return '/';
     }
 
+    /**
+     * @return {Zwerm.Events.UNKNOWN_MESSAGE}
+     * @static
+     */
+    static get UNKNOWN_MESSAGE_EVENT() {
+        return 'zwerm.unknown';
+    }
+
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
