@@ -29,7 +29,7 @@ class ZwermAPI {
         this._apiToken = apiToken;
     }
 
-    // region getters & setters
+    // region getter constants
     /**
      * @return {Zwerm.DISABLED_ROUTING}
      * @static
@@ -46,6 +46,8 @@ class ZwermAPI {
         return '/';
     }
 
+    // endregion
+    // region getters & setters
     // region apiUrl (get & set)
     /**
      *
