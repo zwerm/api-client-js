@@ -410,6 +410,28 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: UpdateConversationRouteEvent
+        type UPDATE_CONVERSATION_ROUTE = 'zwerm.conversations.route.update';
+        type UpdateConversationRouteEvent = UpdateUserRouteEvent.UpdateUserRouteEvent;
+
+        namespace UpdateConversationRouteEvent {
+            interface UpdateConversationRouteEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<UpdateConversationRouteEventData> {
+                event: UPDATE_CONVERSATION_ROUTE;
+                payload: UpdateConversationRouteEventData;
+            }
+
+            interface UpdateConversationRouteEventData {
+                /**
+                 * The canonical url of the user who updates the route
+                 */
+                updatedBy: string;
+                /**
+                 * The conversations new route
+                 */
+                newRoute: string;
+            }
+        }
+        // endregion
         // region namespace: EngineErrorEvent
         type ENGINE_ERROR = 'zwerm.engines.error';
         type EngineErrorEvent<ErrorShape extends object> = EngineErrorEvent.EngineErrorEvent<ErrorShape>;
