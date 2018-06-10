@@ -78,6 +78,14 @@ class ZwermAPI {
         return 'zwerm.users.new';
     }
 
+    /**
+     * @return {Zwerm.Events.UPDATE_USER_ROUTE}
+     * @static
+     */
+    static get UPDATE_USER_ROUTE_EVENT() {
+        return 'zwerm.users.route.update';
+    }
+
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
