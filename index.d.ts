@@ -355,6 +355,7 @@ export declare namespace Zwerm {
         namespace UnknownMessageEvent {
             interface UnknownMessageEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<UnknownMessageEventData> {
                 event: UNKNOWN_MESSAGE;
+                payload: UnknownMessageEventData;
             }
 
             interface UnknownMessageEventData {
