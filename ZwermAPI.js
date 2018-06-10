@@ -70,6 +70,14 @@ class ZwermAPI {
         return 'zwerm.channels.error';
     }
 
+    /**
+     * @return {Zwerm.Events.NEW_USER}
+     * @static
+     */
+    static get NEW_USER_EVENT() {
+        return 'zwerm.users.new';
+    }
+
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
