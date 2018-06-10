@@ -379,7 +379,7 @@ export declare namespace Zwerm {
         // endregion
         // region namespace: EngineErrorEvent
         type ENGINE_ERROR = 'zwerm.engines.error';
-        type EngineErrorEvent = EngineErrorEvent.EngineErrorEvent;
+        type EngineErrorEvent<ErrorShape extends object> = EngineErrorEvent.EngineErrorEvent<ErrorShape>;
 
         namespace EngineErrorEvent {
             interface EngineErrorEvent<ErrorShape extends object> extends StaMP.Protocol.Messages.StandardisedEventMessage<EngineErrorEventData> {
@@ -407,7 +407,7 @@ export declare namespace Zwerm {
         // endregion
         // region namespace: ChannelErrorEvent
         type CHANNEL_ERROR = 'zwerm.channels.error';
-        type ChannelErrorEvent = ChannelErrorEvent.ChannelErrorEvent;
+        type ChannelErrorEvent<ErrorShape extends object> = ChannelErrorEvent.ChannelErrorEvent<ErrorShape>;
 
         namespace ChannelErrorEvent {
             interface ChannelErrorEvent<ErrorShape extends object> extends StaMP.Protocol.Messages.StandardisedEventMessage<ChannelErrorEventData> {
