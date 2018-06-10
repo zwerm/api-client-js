@@ -376,6 +376,34 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: EngineErrorEvent
+        type ENGINE_ERROR = 'zwerm.engines.error';
+        type EngineErrorEvent = EngineErrorEvent.EngineErrorEvent;
+
+        namespace EngineErrorEvent {
+            interface EngineErrorEvent<ErrorShape extends object> extends StaMP.Protocol.Messages.StandardisedEventMessage<EngineErrorEventData> {
+                event: ENGINE_ERROR;
+                payload: EngineErrorEventData<ErrorShape>;
+            }
+
+            interface EngineErrorEventData<ErrorShape extends object> {
+                /**
+                 * The id of the engine that had the error
+                 */
+                engineId: string;
+                /**
+                 * A message describing the error
+                 */
+                errorMessage: string;
+                /**
+                 * The details behind the error.
+                 *
+                 * Usually this is the original error, in one form or another.
+                 */
+                errorDetails: ErrorShape;
+            }
+        }
+        // endregion
     }
     // endregion
 }
