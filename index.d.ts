@@ -159,6 +159,15 @@ export declare namespace Zwerm {
             timestamp: string;
             message: TypeOfStaMPMessage;
         }
+
+        interface EventTransactionEntry<TypeOfEventMessage extends StaMP.Protocol.EventMessage> extends TransactionEntry {
+            botUserId: string;
+            conversationId: string;
+            transactionId: string;
+            type: 'event';
+            timestamp: string;
+            message: TypeOfEventMessage;
+        }
     }
     // endregion
     // region namespace: AWS
