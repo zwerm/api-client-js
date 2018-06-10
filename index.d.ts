@@ -404,6 +404,34 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: ChannelErrorEvent
+        type CHANNEL_ERROR = 'zwerm.channels.error';
+        type ChannelErrorEvent = ChannelErrorEvent.ChannelErrorEvent;
+
+        namespace ChannelErrorEvent {
+            interface ChannelErrorEvent<ErrorShape extends object> extends StaMP.Protocol.Messages.StandardisedEventMessage<ChannelErrorEventData> {
+                event: CHANNEL_ERROR;
+                payload: ChannelErrorEventData<ErrorShape>;
+            }
+
+            interface ChannelErrorEventData<ErrorShape extends object> {
+                /**
+                 * The id of the channel that had the error
+                 */
+                channelId: string;
+                /**
+                 * A message describing the error
+                 */
+                errorMessage: string;
+                /**
+                 * The details behind the error.
+                 *
+                 * Usually this is the original error, in one form or another.
+                 */
+                errorDetails: ErrorShape;
+            }
+        }
+        // endregion
     }
     // endregion
 }
