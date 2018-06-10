@@ -86,6 +86,14 @@ class ZwermAPI {
         return 'zwerm.users.route.update';
     }
 
+    /**
+     * @return {Zwerm.Events.NEW_CONVERSATION}
+     * @static
+     */
+    static get NEW_CONVESRATION_EVENT() {
+        return 'zwerm.conversations.new';
+    }
+
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
