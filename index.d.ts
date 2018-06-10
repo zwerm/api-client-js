@@ -365,6 +365,17 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: NewUserEvent
+        type NEW_USER = 'zwerm.users.new';
+        type NewUserEvent = NewUserEvent.NewUserEvent;
+
+        namespace NewUserEvent {
+            interface NewUserEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<Zwerm.Database.UserEntry> {
+                event: NEW_USER;
+                payload: Zwerm.Database.UserEntry;
+            }
+        }
+        // endregion
     }
     // endregion
 }
