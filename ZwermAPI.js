@@ -62,6 +62,14 @@ class ZwermAPI {
         return 'zwerm.engines.error';
     }
 
+    /**
+     * @return {Zwerm.Events.CHANNEL_ERROR}
+     * @static
+     */
+    static get CHANNEL_ERROR_EVENT() {
+        return 'zwerm.channels.error';
+    }
+
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
