@@ -54,6 +54,14 @@ class ZwermAPI {
         return 'zwerm.unknown';
     }
 
+    /**
+     * @return {Zwerm.Events.ENGINE_ERROR}
+     * @static
+     */
+    static get ENGINE_ERROR_EVENT() {
+        return 'zwerm.engines.error';
+    }
+
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
