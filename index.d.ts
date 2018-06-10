@@ -399,6 +399,17 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: NewConversationEvent
+        type NEW_CONVERSATION = 'zwerm.conversations.new';
+        type NewConversationEvent = NewConversationEvent.NewConversationEvent;
+
+        namespace NewConversationEvent {
+            interface NewConversationEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<Zwerm.Database.ConversationEntry> {
+                event: NEW_CONVERSATION;
+                payload: Zwerm.Database.ConversationEntry;
+            }
+        }
+        // endregion
         // region namespace: EngineErrorEvent
         type ENGINE_ERROR = 'zwerm.engines.error';
         type EngineErrorEvent<ErrorShape extends object> = EngineErrorEvent.EngineErrorEvent<ErrorShape>;
