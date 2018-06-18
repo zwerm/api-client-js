@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
  - `npm version` script to help automate bits and bobs, making it easier & quicker to release.
+ 
+### Removed
+ - `@stampit/stamp` optional dependency, as it screws over `npm` despite being optional.
+    Once this package is released publicity, it'll be added back.
+    This (hopefully) shouldn't screw over the typings too much.
 
 ## [0.3.0] - 2018-06-19
 

@@ -24,9 +24,6 @@
     "devDependencies": {
         "@types/qs": "^6.5.1"
     },
-    "optionalDependencies": {
-        "@stampit/stamp": "git+ssh://git@bitbucket.org/preferizi/stamp.git"
-    },
     "engines": {
         "node": ">=8.0.0"
     }
