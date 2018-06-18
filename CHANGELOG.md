@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.0] - 2018-06-19
+
 The `Events` update! This release contains the initial definitions and structure for Zwerms
 'system' events, including both typescript typings & static constant getters to `ZwermAPI`.
 
@@ -58,7 +60,8 @@ repo into this repo, so that we can finally wind that repo down in favor of this
 This is the initial release, being pulled over from the BitBucket repo,
 and following repository preparations for publishing on Github and NPM.
 
-[Unreleased]: https://github.com/zwerm/api-client-js/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/zwerm/api-client-js/compare/v0.3.0...HEAD
 
+[0.3.0]: https://github.com/zwerm/api-client-js/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.1.0
