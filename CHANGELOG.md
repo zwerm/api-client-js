@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - `npm version` script to help automate bits and bobs, making it easier & quicker to release.
+
 ## [0.3.0] - 2018-06-19
 
 The `Events` update! This release contains the initial definitions and structure for Zwerms
