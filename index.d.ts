@@ -432,6 +432,24 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: ConversationSentimentNegativeEvent
+        type CONVERSATION_SENTIMENT_NEGATIVE = 'zwerm.conversations.sentiment.negative';
+        type ConversationSentimentNegativeEvent = ConversationSentimentNegativeEvent.ConversationSentimentNegativeEvent;
+
+        namespace ConversationSentimentNegativeEvent {
+            interface ConversationSentimentNegativeEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<ConversationSentimentNegativeEventData> {
+                event: CONVERSATION_SENTIMENT_NEGATIVE;
+                payload: ConversationSentimentNegativeEventData;
+            }
+
+            interface ConversationSentimentNegativeEventData {
+                /**
+                 * The sentiment of the conversation.
+                 */
+                sentiment: AWS.Comprehend.Sentiment;
+            }
+        }
+        // endregion
         // region namespace: EngineErrorEvent
         type ENGINE_ERROR = 'zwerm.engines.error';
         type EngineErrorEvent<ErrorShape extends object> = EngineErrorEvent.EngineErrorEvent<ErrorShape>;
