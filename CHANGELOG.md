@@ -6,8 +6,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+Some minor cleanup, automation, and fixes. This release removes the whole .idea folder,
+which might mess-up this project in JetBrains IDEs.
+
+You can fix this by just copying the deleted files from v0.3.0 to your .idea folder,
+or by just deleting the project & re-checking it out again from source.
+
+Sorry in advance - it's easier to rip the bandage off now, vs later down the line.
+
 ### Added
  - `npm version` script to help automate bits and bobs, making it easier & quicker to release.
+ 
+### Changed
+ - Cleaned up .gitignore, ignoring and removing .idea/** folder & files.
+    This might break existing checkouts of this repo as projects in JetBrains IDEs.
+    The best fix is to just delete & checkout the project again. Sorry!
  
 ### Removed
  - `@stampit/stamp` optional dependency, as it screws over `npm` despite being optional.
