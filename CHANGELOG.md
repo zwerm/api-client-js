@@ -50,10 +50,10 @@ The `Events` update! This release contains the initial definitions and structure
 
 ### Changed
  - The `Zwerm.Database.ChannelService` union type now has type `string`, so that it won't
-    complain when using channel services that have not yet been added.
- - Renamed `StaMPTransaction` to `StaMPTransactionEntry` (in `Zwerm.Database` namespace).
+    complain when using channel services that have not yet been added. ([9b52c22])
+ - Renamed `StaMPTransaction` to `StaMPTransactionEntry` (in `Zwerm.Database` namespace). ([1a9652f])
  - Minor cleanup to typings code layout; mainly adding region tags and property overrides
-    to make IDEs a bit happier.
+    to make IDEs a bit happier. ([1fff938], [f3b12c5], [4a6f7d6])
 
 ## [0.2.0] - 2018-06-05
 
@@ -110,3 +110,8 @@ and following repository preparations for publishing on Github and NPM.
 [6e7250c]: https://github.com/zwerm/api-client-js/commit/6e7250c
 [2e4402b]: https://github.com/zwerm/api-client-js/commit/2e4402b
 [c44d389]: https://github.com/zwerm/api-client-js/commit/c44d389
+[1a9652f]: https://github.com/zwerm/api-client-js/commit/1a9652f
+[9b52c22]: https://github.com/zwerm/api-client-js/commit/9b52c22
+[1fff938]: https://github.com/zwerm/api-client-js/commit/1fff938
+[f3b12c5]: https://github.com/zwerm/api-client-js/commit/f3b12c5
+[4a6f7d6]: https://github.com/zwerm/api-client-js/commit/4a6f7d6
