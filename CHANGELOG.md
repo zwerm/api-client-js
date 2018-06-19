@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - Definitions for `ConversationSentimentNegativeEvent` (`zwerm.conversations.sentiment.negative` event). ([c44d389], [2e4402b])
+
 ## [0.4.0] - 2018-06-19
 
 Some minor cleanup, automation, and fixes. This release removes the whole .idea folder,
@@ -18,12 +21,12 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
 
 ### Added
  - `npm version` script to help automate bits and bobs, making it easier & quicker to release.
- 
+
 ### Changed
  - Cleaned up .gitignore, ignoring and removing .idea/** folder & files.
     This might break existing checkouts of this repo as projects in JetBrains IDEs.
     The best fix is to just delete & checkout the project again. Sorry!
- 
+
 ### Removed
  - `@stampit/stamp` optional dependency, as it screws over `npm` despite being optional.
     Once this package is released publicly, it'll be added back.
@@ -50,11 +53,11 @@ The `Events` update! This release contains the initial definitions and structure
     complain when using channel services that have not yet been added.
  - Renamed `StaMPTransaction` to `StaMPTransactionEntry` (in `Zwerm.Database` namespace).
  - Minor cleanup to typings code layout; mainly adding region tags and property overrides
-    to make IDEs a bit happier. 
+    to make IDEs a bit happier.
 
 ## [0.2.0] - 2018-06-05
 
-This release was mainly about moving all of the previous commits that were made to the BitBucket 
+This release was mainly about moving all of the previous commits that were made to the BitBucket
 repo into this repo, so that we can finally wind that repo down in favor of this public one.
 
 ### Added
@@ -89,3 +92,6 @@ and following repository preparations for publishing on Github and NPM.
 [0.3.0]: https://github.com/zwerm/api-client-js/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.1.0
+
+[2e4402b]: https://github.com/Zwerm/composite-bs-client/commit/2e4402b
+[c44d389]: https://github.com/Zwerm/composite-bs-client/commit/c44d389
