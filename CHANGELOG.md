@@ -26,7 +26,7 @@ Sorry in advance - it's easier to rip the bandage off now, vs later down the lin
  
 ### Removed
  - `@stampit/stamp` optional dependency, as it screws over `npm` despite being optional.
-    Once this package is released publicity, it'll be added back.
+    Once this package is released publicly, it'll be added back.
     This (hopefully) shouldn't screw over the typings too much.
 
 ## [0.3.0] - 2018-06-19
