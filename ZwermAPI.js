@@ -102,6 +102,14 @@ class ZwermAPI {
         return 'zwerm.conversations.route.update';
     }
 
+    /**
+     * @return {Zwerm.Events.CONVERSATION_SENTIMENT_NEGATIVE}
+     * @static
+     */
+    static get CONVERSATION_SENTIMENT_NEGATIVE_EVENT() {
+        return 'zwerm.conversations.sentiment.negative';
+    }
+
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
