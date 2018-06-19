@@ -38,15 +38,15 @@ The `Events` update! This release contains the initial definitions and structure
 'system' events, including both typescript typings & static constant getters to `ZwermAPI`.
 
 ### Added
- - `Events` namespace.
- - Definitions for `UnknownMessageEvent` (`zwerm.unknown` event).
- - Definitions for `ChannelErrorEvent` (`zwerm.channels.error` event).
- - Definitions for `EngineErrorEvent` (`zwerm.engines.error` event).
- - Definitions for `NewUserEvent` (`zwerm.users.new` event).
- - Definitions for `UpdateUserRouteEvent` (`zwerm.users.route.update` event).
- - Definitions for `NewConversationEvent` (`zwerm.conversations.new` event).
- - Definitions for `UpdateConversationRouteEvent` (`zwerm.conversations.route.update` event).
- - `Zwerm.Database.EventTransactionEntry` interface.
+ - `Events` namespace. ([c0d770c])
+ - Definitions for `UnknownMessageEvent` (`zwerm.unknown` event). ([c0d770c], [b0917d6])
+ - Definitions for `ChannelErrorEvent` (`zwerm.channels.error` event). ([9b0877b], [917116c])
+ - Definitions for `EngineErrorEvent` (`zwerm.engines.error` event). ([45e6a58], [0d5c100])
+ - Definitions for `NewUserEvent` (`zwerm.users.new` event). ([af4d820], [a8c31dd])
+ - Definitions for `UpdateUserRouteEvent` (`zwerm.users.route.update` event). ([dcdc14d], [3873251])
+ - Definitions for `NewConversationEvent` (`zwerm.conversations.new` event). ([42405b3], [ad6254e])
+ - Definitions for `UpdateConversationRouteEvent` (`zwerm.conversations.route.update` event). ([35aaba8], [0b3bcd2])
+ - `Zwerm.Database.EventTransactionEntry` interface. ([6e7250c])
 
 ### Changed
  - The `Zwerm.Database.ChannelService` union type now has type `string`, so that it won't
@@ -93,5 +93,20 @@ and following repository preparations for publishing on Github and NPM.
 [0.2.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.1.0
 
-[2e4402b]: https://github.com/Zwerm/composite-bs-client/commit/2e4402b
-[c44d389]: https://github.com/Zwerm/composite-bs-client/commit/c44d389
+[c0d770c]: https://github.com/zwerm/api-client-js/commit/c0d770c
+[b0917d6]: https://github.com/zwerm/api-client-js/commit/b0917d6
+[9b0877b]: https://github.com/zwerm/api-client-js/commit/9b0877b
+[917116c]: https://github.com/zwerm/api-client-js/commit/917116c
+[45e6a58]: https://github.com/zwerm/api-client-js/commit/45e6a58
+[0d5c100]: https://github.com/zwerm/api-client-js/commit/0d5c100
+[af4d820]: https://github.com/zwerm/api-client-js/commit/af4d820
+[a8c31dd]: https://github.com/zwerm/api-client-js/commit/a8c31dd
+[dcdc14d]: https://github.com/zwerm/api-client-js/commit/dcdc14d
+[3873251]: https://github.com/zwerm/api-client-js/commit/3873251
+[42405b3]: https://github.com/zwerm/api-client-js/commit/42405b3
+[ad6254e]: https://github.com/zwerm/api-client-js/commit/ad6254e
+[35aaba8]: https://github.com/zwerm/api-client-js/commit/35aaba8
+[0b3bcd2]: https://github.com/zwerm/api-client-js/commit/0b3bcd2
+[6e7250c]: https://github.com/zwerm/api-client-js/commit/6e7250c
+[2e4402b]: https://github.com/zwerm/api-client-js/commit/2e4402b
+[c44d389]: https://github.com/zwerm/api-client-js/commit/c44d389
