@@ -651,9 +651,9 @@ class ZwermAPI {
      * @param {string} userId the id of the user that the event is being sent in regards to.
      * @param {string} event the name of the event.
      * @param {Object} payload the payload of the event. This cannot be more than 5 levels deep.
+     * @param {string} [conversationId] the id of the conversation that the event is being sent in regards to.
      * @param {string} [channelId] id of the channel to scope this event as coming from.
      * @param {string} [route] the engine route to send this event down.
-     * @param {string} [conversationId] the id of the conversation that the event is being sent in regards to.
      * @param {number} [value] a value.
      *
      * @return {Promise}
@@ -661,7 +661,7 @@ class ZwermAPI {
      * @see postEventToUser postEventToUser method
      * @see postEventToConversation postEventToConversation method
      */
-    postEvent(teamSlug, botId, userId, event, payload, { channelId, route, conversationId, value }) {
+    postEvent(teamSlug, botId, userId, event, payload, { conversationId, channelId, route, value }) {
         if (conversationId) {
             return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value });
         }
