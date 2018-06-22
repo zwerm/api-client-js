@@ -638,6 +638,89 @@ class ZwermAPI {
     }
 
     // endregion
+    // region event sending
+    /**
+     * Posts an event to Zwerm, where it'll be logged, and be routed onto the appropriate engine.
+     *
+     * If no `conversationId` is given, the event will be sent directly to the user,
+     * meaning that the most current conversation for the user in question will be used,
+     * with one being created if there isn't a current conversation.
+     *
+     * @param {string} teamSlug the team that owns the bot that the event is being in regards to.
+     * @param {string} botId the id of the bot that the event is being sent in regards to.
+     * @param {string} userId the id of the user that the event is being sent in regards to.
+     * @param {string} event the name of the event.
+     * @param {Object} payload the payload of the event. This cannot be more than 5 levels deep.
+     * @param {string} [channelId] id of the channel to scope this event as coming from.
+     * @param {string} [route] the engine route to send this event down.
+     * @param {string} [conversationId] the id of the conversation that the event is being sent in regards to.
+     * @param {number} [value] a value.
+     *
+     * @return {Promise}
+     *
+     * @see postEventToUser postEventToUser method
+     * @see postEventToConversation postEventToConversation method
+     */
+    postEvent(teamSlug, botId, userId, event, payload, { channelId, route, conversationId, value }) {
+        if (conversationId) {
+            return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route });
+        }
+
+        return this.postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route });
+    }
+
+    /**
+     * Posts an event to Zwerm, where it'll be logged, and be routed onto the appropriate engine.
+     *
+     * @param {string} teamSlug the team that owns the bot that the event is being in regards to.
+     * @param {string} botId the id of the bot that the event is being sent in regards to.
+     * @param {string} userId the id of the user that the event is being sent in regards to.
+     * @param {string} event the name of the event.
+     * @param {Object} payload the payload of the event. This cannot be more than 5 objects deep.
+     * @param {string} [channelId] id of the channel to scope this event as coming from.
+     * @param {string} [route] the engine route to send this event down.
+     * @param {number} [value] a value.
+     *
+     * @return {Promise}
+     */
+    postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value }) {
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/event`, {
+                       event,
+                       payload,
+                       channelId,
+                       route,
+                       value
+                   })
+                   .then(response => response.data);
+    }
+
+    /**
+     * Posts an event to Zwerm, where it'll be logged, and be routed onto the appropriate engine.
+     *
+     * @param {string} teamSlug the team that owns the bot that the event is being in regards to.
+     * @param {string} botId the id of the bot that the event is being sent in regards to.
+     * @param {string} userId the id of the user that the event is being sent in regards to.
+     * @param {string} conversationId  the id of the conversation that the event is being sent in regards to.
+     * @param {string} event the name of the event.
+     * @param {Object} payload the payload of the event. This cannot be more than 5 objects deep.
+     * @param {string} [channelId] id of the channel to scope this event as coming from.
+     * @param {string} [route] the engine route to send this event down.
+     * @param {number} [value] a value.
+     *
+     * @return {Promise}
+     */
+    postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value }) {
+        return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}/event`, {
+                       event,
+                       payload,
+                       channelId,
+                       route,
+                       value
+                   })
+                   .then(response => response.data);
+    }
+
+    // endregion
 }
 
 module.exports = ZwermAPI;
