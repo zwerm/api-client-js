@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.5.0] - 2018-06-22
+
 ### Added
  - Methods for using the events api endpoints, allowing you to send events to users & conversations. ([c082ab8])
  - Definitions for `ConversationSentimentNegativeEvent` (`zwerm.conversations.sentiment.negative` event). ([c44d389], [2e4402b])
@@ -87,8 +89,9 @@ repo into this repo, so that we can finally wind that repo down in favor of this
 This is the initial release, being pulled over from the BitBucket repo,
 and following repository preparations for publishing on Github and NPM.
 
-[Unreleased]: https://github.com/zwerm/api-client-js/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/zwerm/api-client-js/compare/v0.5.0...HEAD
 
+[0.5.0]: https://github.com/zwerm/api-client-js/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/zwerm/api-client-js/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/zwerm/api-client-js/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.2.0
