@@ -663,10 +663,10 @@ class ZwermAPI {
      */
     postEvent(teamSlug, botId, userId, event, payload, { channelId, route, conversationId, value }) {
         if (conversationId) {
-            return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route });
+            return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value });
         }
 
-        return this.postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route });
+        return this.postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value });
     }
 
     /**
