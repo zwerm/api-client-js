@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - Definitions for `WelcomeEvent` (`zwerm.welcome` event). ([17b683a], [e737cf4])
+
 ## [0.5.0] - 2018-06-22
 
 ### Added
