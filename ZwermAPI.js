@@ -49,6 +49,7 @@ class ZwermAPI {
 
     // endregion
     // region event constants
+    // region system events
     // region connect events
     /**
      * @return {Zwerm.Events.UNKNOWN_MESSAGE}
@@ -118,6 +119,18 @@ class ZwermAPI {
         return 'zwerm.conversations.sentiment.negative';
     }
 
+    // endregion
+    // endregion
+    // region conversational events
+    // region welcome events
+    /**
+     * @return {Zwerm.Events.WELCOME}
+     * @static
+     */
+    static get WELCOME_EVENT() {
+        return 'zwerm.welcome';
+    }
+    // endregion
     // endregion
     // endregion
     // endregion
