@@ -362,6 +362,20 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: WelcomeBackEvent
+        type WELCOME_BACK = 'zwerm.welcome-back';
+        type WelcomeBackEvent = WelcomeBackEvent.WelcomeBackEvent;
+
+        namespace WelcomeBackEvent {
+            interface WelcomeBackEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<WelcomeBackEventData> {
+                event: WELCOME_BACK;
+                payload: WelcomeBackEventData;
+            }
+
+            interface WelcomeBackEventData {
+            }
+        }
+        // endregion
         // region namespace: UnknownMessageEvent
         type UNKNOWN_MESSAGE = 'zwerm.unknown';
         type UnknownMessageEvent = UnknownMessageEvent.UnknownMessageEvent;
