@@ -348,6 +348,20 @@ export declare namespace Zwerm {
     // region namespace: events
     namespace Events {
 
+        // region namespace: WelcomeEvent
+        type WELCOME = 'zwerm.welcome';
+        type WelcomeEvent = WelcomeEvent.WelcomeEvent;
+
+        namespace WelcomeEvent {
+            interface WelcomeEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<WelcomeEventData> {
+                event: WELCOME;
+                payload: WelcomeEventData;
+            }
+
+            interface WelcomeEventData {
+            }
+        }
+        // endregion
         // region namespace: UnknownMessageEvent
         type UNKNOWN_MESSAGE = 'zwerm.unknown';
         type UnknownMessageEvent = UnknownMessageEvent.UnknownMessageEvent;
