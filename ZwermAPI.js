@@ -130,6 +130,13 @@ class ZwermAPI {
     static get WELCOME_EVENT() {
         return 'zwerm.welcome';
     }
+    /**
+     * @return {Zwerm.Events.WELCOME_BACK}
+     * @static
+     */
+    static get WELCOME_BACK_EVENT() {
+        return 'zwerm.welcome-back';
+    }
     // endregion
     // endregion
     // endregion
