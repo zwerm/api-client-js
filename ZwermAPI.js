@@ -30,6 +30,7 @@ class ZwermAPI {
     }
 
     // region getter constants
+    // region routes
     /**
      * @return {Zwerm.DISABLED_ROUTING}
      * @static
@@ -46,6 +47,9 @@ class ZwermAPI {
         return '/';
     }
 
+    // endregion
+    // region event constants
+    // region connect events
     /**
      * @return {Zwerm.Events.UNKNOWN_MESSAGE}
      * @static
@@ -70,6 +74,8 @@ class ZwermAPI {
         return 'zwerm.channels.error';
     }
 
+    // endregion
+    // region user events
     /**
      * @return {Zwerm.Events.NEW_USER}
      * @static
@@ -86,6 +92,8 @@ class ZwermAPI {
         return 'zwerm.users.route.update';
     }
 
+    // endregion
+    // region conversation events
     /**
      * @return {Zwerm.Events.NEW_CONVERSATION}
      * @static
@@ -110,6 +118,8 @@ class ZwermAPI {
         return 'zwerm.conversations.sentiment.negative';
     }
 
+    // endregion
+    // endregion
     // endregion
     // region getters & setters
     // region apiUrl (get & set)
