@@ -398,6 +398,21 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: TimerCancelEvent
+        type TIMER_CANCEL = 'zwerm.timer.cancel';
+        type TimerCancelEvent = TimerCancelEvent.TimerCancelEvent;
+
+        namespace TimerCancelEvent {
+            interface TimerCancelEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<TimerCancelEventData> {
+                event: TIMER_START;
+                payload: TimerCancelEventData;
+            }
+
+            interface TimerCancelEventData {
+                id: string;
+            }
+        }
+        // endregion
         // region namespace: UnknownMessageEvent
         type UNKNOWN_MESSAGE = 'zwerm.unknown';
         type UnknownMessageEvent = UnknownMessageEvent.UnknownMessageEvent;
