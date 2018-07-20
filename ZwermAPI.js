@@ -138,6 +138,15 @@ class ZwermAPI {
         return 'zwerm.welcome-back';
     }
     // endregion
+    // region timer events
+    /**
+     * @return {Zwerm.Events.TIMER_START}
+     * @static
+     */
+    static get TIMER_START_EVENT() {
+        return 'zwerm.timer.start';
+    }
+    // endregion
     // endregion
     // endregion
     // endregion
