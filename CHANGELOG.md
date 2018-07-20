@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  - Definitions for `TimerStartEvent` (`zwerm.timer.start` event). ([0071d05], [b686e4b])
  - Definitions for `TimerCancelEvent` (`zwerm.timer.cancel` event). ([5261272], [2910329])
 
+### Removed
+ - Deprecated `ZwermAPI~NEW_CONVESRATION_EVENT` method in favor of `ZwermAPI~NEW_CONVERSATION_EVENT` method. ([cb72e4b])
+
 ## [0.5.0] - 2018-06-22
 
 ### Added
@@ -103,6 +106,15 @@ and following repository preparations for publishing on Github and NPM.
 [0.2.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/zwerm/api-client-js/compare/v0.1.0...v0.1.0
 
+[17b683a]: https://github.com/zwerm/api-client-js/commit/17b683a
+[e737cf4]: https://github.com/zwerm/api-client-js/commit/e737cf4
+[7fde191]: https://github.com/zwerm/api-client-js/commit/7fde191
+[b986018]: https://github.com/zwerm/api-client-js/commit/b986018
+[0071d05]: https://github.com/zwerm/api-client-js/commit/0071d05
+[b686e4b]: https://github.com/zwerm/api-client-js/commit/b686e4b
+[5261272]: https://github.com/zwerm/api-client-js/commit/5261272
+[2910329]: https://github.com/zwerm/api-client-js/commit/2910329
+[cb72e4b]: https://github.com/zwerm/api-client-js/commit/cb72e4b
 [c082ab8]: https://github.com/zwerm/api-client-js/commit/c082ab8
 [c0d770c]: https://github.com/zwerm/api-client-js/commit/c0d770c
 [b0917d6]: https://github.com/zwerm/api-client-js/commit/b0917d6
