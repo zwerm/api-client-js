@@ -98,8 +98,18 @@ class ZwermAPI {
     /**
      * @return {Zwerm.Events.NEW_CONVERSATION}
      * @static
+     *
+     * @deprecated in favor of {@link NEW_CONVERSATION_EVENT}
      */
     static get NEW_CONVESRATION_EVENT() {
+        return ZwermAPI.NEW_CONVERSATION_EVENT;
+    }
+
+    /**
+     * @return {Zwerm.Events.NEW_CONVERSATION}
+     * @static
+     */
+    static get NEW_CONVERSATION_EVENT() {
         return 'zwerm.conversations.new';
     }
 
