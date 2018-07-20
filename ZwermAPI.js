@@ -30,6 +30,7 @@ class ZwermAPI {
     }
 
     // region getter constants
+    // region routes
     /**
      * @return {Zwerm.DISABLED_ROUTING}
      * @static
@@ -46,6 +47,10 @@ class ZwermAPI {
         return '/';
     }
 
+    // endregion
+    // region event constants
+    // region system events
+    // region connect events
     /**
      * @return {Zwerm.Events.UNKNOWN_MESSAGE}
      * @static
@@ -70,6 +75,8 @@ class ZwermAPI {
         return 'zwerm.channels.error';
     }
 
+    // endregion
+    // region user events
     /**
      * @return {Zwerm.Events.NEW_USER}
      * @static
@@ -86,6 +93,8 @@ class ZwermAPI {
         return 'zwerm.users.route.update';
     }
 
+    // endregion
+    // region conversation events
     /**
      * @return {Zwerm.Events.NEW_CONVERSATION}
      * @static
@@ -110,6 +119,43 @@ class ZwermAPI {
         return 'zwerm.conversations.sentiment.negative';
     }
 
+    // endregion
+    // endregion
+    // region conversational events
+    // region welcome events
+    /**
+     * @return {Zwerm.Events.WELCOME}
+     * @static
+     */
+    static get WELCOME_EVENT() {
+        return 'zwerm.welcome';
+    }
+    /**
+     * @return {Zwerm.Events.WELCOME_BACK}
+     * @static
+     */
+    static get WELCOME_BACK_EVENT() {
+        return 'zwerm.welcome-back';
+    }
+    // endregion
+    // region timer events
+    /**
+     * @return {Zwerm.Events.TIMER_START}
+     * @static
+     */
+    static get TIMER_START_EVENT() {
+        return 'zwerm.timer.start';
+    }
+    /**
+     * @return {Zwerm.Events.TIMER_CANCEL}
+     * @static
+     */
+    static get TIMER_CANCEL_EVENT() {
+        return 'zwerm.timer.cancel';
+    }
+    // endregion
+    // endregion
+    // endregion
     // endregion
     // region getters & setters
     // region apiUrl (get & set)

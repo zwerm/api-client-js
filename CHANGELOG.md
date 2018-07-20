@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - Definitions for `WelcomeEvent` (`zwerm.welcome` event). ([17b683a], [e737cf4])
+ - Definitions for `WelcomeBackEvent` (`zwerm.welcome-back` event). ([7fde191], [b986018])
+ - Definitions for `TimerStartEvent` (`zwerm.timer.start` event). ([0071d05], [b686e4b])
+ - Definitions for `TimerCancelEvent` (`zwerm.timer.cancel` event). ([5261272], [2910329])
+
 ## [0.5.0] - 2018-06-22
 
 ### Added

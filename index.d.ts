@@ -348,6 +348,71 @@ export declare namespace Zwerm {
     // region namespace: events
     namespace Events {
 
+        // region namespace: WelcomeEvent
+        type WELCOME = 'zwerm.welcome';
+        type WelcomeEvent = WelcomeEvent.WelcomeEvent;
+
+        namespace WelcomeEvent {
+            interface WelcomeEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<WelcomeEventData> {
+                event: WELCOME;
+                payload: WelcomeEventData;
+            }
+
+            interface WelcomeEventData {
+            }
+        }
+        // endregion
+        // region namespace: WelcomeBackEvent
+        type WELCOME_BACK = 'zwerm.welcome-back';
+        type WelcomeBackEvent = WelcomeBackEvent.WelcomeBackEvent;
+
+        namespace WelcomeBackEvent {
+            interface WelcomeBackEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<WelcomeBackEventData> {
+                event: WELCOME_BACK;
+                payload: WelcomeBackEventData;
+            }
+
+            interface WelcomeBackEventData {
+            }
+        }
+        // endregion
+        // region namespace: TimerStartEvent
+        type TIMER_START = 'zwerm.timer.start';
+        type TimerStartEvent = TimerStartEvent.TimerStartEvent;
+
+        namespace TimerStartEvent {
+            interface TimerStartEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<TimerStartEventData> {
+                event: TIMER_START;
+                payload: TimerStartEventData;
+            }
+
+            interface TimerStartEventData {
+                /**
+                 * Stringified json of the StaMP event to send when the timer ends.
+                 */
+                event: string;
+                timestamp: string;
+                endpoint: string;
+                route?: string;
+                value?: string;
+            }
+        }
+        // endregion
+        // region namespace: TimerCancelEvent
+        type TIMER_CANCEL = 'zwerm.timer.cancel';
+        type TimerCancelEvent = TimerCancelEvent.TimerCancelEvent;
+
+        namespace TimerCancelEvent {
+            interface TimerCancelEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<TimerCancelEventData> {
+                event: TIMER_START;
+                payload: TimerCancelEventData;
+            }
+
+            interface TimerCancelEventData {
+                id: string;
+            }
+        }
+        // endregion
         // region namespace: UnknownMessageEvent
         type UNKNOWN_MESSAGE = 'zwerm.unknown';
         type UnknownMessageEvent = UnknownMessageEvent.UnknownMessageEvent;
