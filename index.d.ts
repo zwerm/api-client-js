@@ -376,6 +376,28 @@ export declare namespace Zwerm {
             }
         }
         // endregion
+        // region namespace: TimerStartEvent
+        type TIMER_START = 'zwerm.timer.start';
+        type TimerStartEvent = TimerStartEvent.TimerStartEvent;
+
+        namespace TimerStartEvent {
+            interface TimerStartEvent extends StaMP.Protocol.Messages.StandardisedEventMessage<TimerStartEventData> {
+                event: TIMER_START;
+                payload: TimerStartEventData;
+            }
+
+            interface TimerStartEventData {
+                /**
+                 * Stringified json of the StaMP event to send when the timer ends.
+                 */
+                event: string;
+                timestamp: string;
+                endpoint: string;
+                route?: string;
+                value?: string;
+            }
+        }
+        // endregion
         // region namespace: UnknownMessageEvent
         type UNKNOWN_MESSAGE = 'zwerm.unknown';
         type UnknownMessageEvent = UnknownMessageEvent.UnknownMessageEvent;
