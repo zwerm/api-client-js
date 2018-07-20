@@ -146,6 +146,13 @@ class ZwermAPI {
     static get TIMER_START_EVENT() {
         return 'zwerm.timer.start';
     }
+    /**
+     * @return {Zwerm.Events.TIMER_CANCEL}
+     * @static
+     */
+    static get TIMER_CANCEL_EVENT() {
+        return 'zwerm.timer.cancel';
+    }
     // endregion
     // endregion
     // endregion
