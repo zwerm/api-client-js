@@ -711,18 +711,19 @@ class ZwermAPI {
      * @param {string} [channelId] id of the channel to scope this event as coming from.
      * @param {string} [route] the engine route to send this event down.
      * @param {number} [value] a value.
+     * @param {string} [timestamp] ISO Datetime for when the event should get triggered
      *
      * @return {Promise}
      *
      * @see postEventToUser postEventToUser method
      * @see postEventToConversation postEventToConversation method
      */
-    postEvent(teamSlug, botId, userId, event, payload, { conversationId, channelId, route, value }) {
+    postEvent(teamSlug, botId, userId, event, payload, { conversationId, channelId, route, value, timestamp }) {
         if (conversationId) {
-            return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value });
+            return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value, timestamp });
         }
 
-        return this.postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value });
+        return this.postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value, timestamp });
     }
 
     /**
@@ -736,16 +737,18 @@ class ZwermAPI {
      * @param {string} [channelId] id of the channel to scope this event as coming from.
      * @param {string} [route] the engine route to send this event down.
      * @param {number} [value] a value.
+     * @param {string} [timestamp] ISO Datetime for when the event should get triggered
      *
      * @return {Promise}
      */
-    postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value }) {
+    postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value, timestamp }) {
         return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/event`, {
                        event,
                        payload,
                        channelId,
                        route,
-                       value
+                       value,
+                       timestamp
                    })
                    .then(response => response.data);
     }
@@ -762,16 +765,18 @@ class ZwermAPI {
      * @param {string} [channelId] id of the channel to scope this event as coming from.
      * @param {string} [route] the engine route to send this event down.
      * @param {number} [value] a value.
+     * @param {string} [timestamp] ISO Datetime for when the event should get triggered
      *
      * @return {Promise}
      */
-    postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value }) {
+    postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value, timestamp }) {
         return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}/event`, {
                        event,
                        payload,
                        channelId,
                        route,
-                       value
+                       value,
+                       timestamp
                    })
                    .then(response => response.data);
     }
