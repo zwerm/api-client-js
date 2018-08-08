@@ -6,7 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.7.0] - 2018-08-09
+## [0.7.0] - 2018-08-08
+
+### Added
+ - Support for the `timestamp` field in `postEvent` methods.
 
 ## [0.6.0] - 2018-07-20
 
