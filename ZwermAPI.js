@@ -710,20 +710,27 @@ class ZwermAPI {
      * @param {string} [conversationId] the id of the conversation that the event is being sent in regards to.
      * @param {string} [channelId] id of the channel to scope this event as coming from.
      * @param {string} [route] the engine route to send this event down.
-     * @param {number} [value] a value.
+     * @param {number} [value] a conversion value.
      * @param {string} [timestamp] ISO Datetime for when the event should get triggered
+     * @param {string} [query] Fallback query to be used with partially supported engines.
      *
      * @return {Promise}
      *
      * @see postEventToUser postEventToUser method
      * @see postEventToConversation postEventToConversation method
      */
-    postEvent(teamSlug, botId, userId, event, payload, { conversationId, channelId, route, value, timestamp }) {
+    postEvent(teamSlug, botId, userId, event, payload, { conversationId, channelId, route, value, timestamp, query }) {
         if (conversationId) {
-            return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value, timestamp });
+            return this.postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, {
+                channelId,
+                route,
+                value,
+                timestamp,
+                query
+            });
         }
 
-        return this.postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value, timestamp });
+        return this.postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value, timestamp, query });
     }
 
     /**
@@ -736,19 +743,21 @@ class ZwermAPI {
      * @param {Object} payload the payload of the event. This cannot be more than 5 objects deep.
      * @param {string} [channelId] id of the channel to scope this event as coming from.
      * @param {string} [route] the engine route to send this event down.
-     * @param {number} [value] a value.
+     * @param {number} [value] a conversion value.
      * @param {string} [timestamp] ISO Datetime for when the event should get triggered
+     * @param {string} [query] Fallback query to be used with partially supported engines.
      *
      * @return {Promise}
      */
-    postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value, timestamp }) {
+    postEventToUser(teamSlug, botId, userId, event, payload, { channelId, route, value, timestamp, query }) {
         return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/event`, {
                        event,
                        payload,
                        channelId,
                        route,
                        value,
-                       timestamp
+                       timestamp,
+                       query
                    })
                    .then(response => response.data);
     }
@@ -764,19 +773,21 @@ class ZwermAPI {
      * @param {Object} payload the payload of the event. This cannot be more than 5 objects deep.
      * @param {string} [channelId] id of the channel to scope this event as coming from.
      * @param {string} [route] the engine route to send this event down.
-     * @param {number} [value] a value.
+     * @param {number} [value] a conversion value.
      * @param {string} [timestamp] ISO Datetime for when the event should get triggered
+     * @param {string} [query] Fallback query to be used with partially supported engines.
      *
      * @return {Promise}
      */
-    postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value, timestamp }) {
+    postEventToConversation(teamSlug, botId, userId, conversationId, event, payload, { channelId, route, value, timestamp, query }) {
         return this._zwermRequest.post(`bots/${teamSlug}/${botId}/users/${userId}/conversations/${conversationId}/event`, {
                        event,
                        payload,
                        channelId,
                        route,
                        value,
-                       timestamp
+                       timestamp,
+                       query
                    })
                    .then(response => response.data);
     }

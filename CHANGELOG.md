@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+ - Support for the `query` field in `postEvent` methods.
+
 ## [0.7.0] - 2018-08-08
 
 ### Added
