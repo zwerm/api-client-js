@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.0] - 2018-08-23
+
 ### Added
  - Support for the `query` field in `postEvent` methods.
 
@@ -108,8 +110,9 @@ repo into this repo, so that we can finally wind that repo down in favor of this
 This is the initial release, being pulled over from the BitBucket repo,
 and following repository preparations for publishing on Github and NPM.
 
-[Unreleased]: https://github.com/zwerm/api-client-js/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/zwerm/api-client-js/compare/v0.8.0...HEAD
 
+[0.8.0]: https://github.com/zwerm/api-client-js/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/zwerm/api-client-js/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/zwerm/api-client-js/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/zwerm/api-client-js/compare/v0.4.0...v0.5.0
