@@ -9,11 +9,11 @@ const /** @type {module:fs} */ fs = require('fs');
  *
  * Example #1:
  *
- * `ssh://git@bitbucket.org/preferizi/bot-configs-manager.git`
+ * `ssh://git@bitbucket.org/zwerm/bot-configs-manager.git`
  *
  * would become
  *
- * `https://bitbucket.org/preferizi/bot-configs-manager`.
+ * `https://bitbucket.org/zwerm/bot-configs-manager`.
  *
  * @param {string} gitRepoUrl
  *
