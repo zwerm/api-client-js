@@ -18,7 +18,7 @@
         "version": "node ./scripts/npm-version.js"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "qs": "^6.5.2"
     },
     "devDependencies": {
